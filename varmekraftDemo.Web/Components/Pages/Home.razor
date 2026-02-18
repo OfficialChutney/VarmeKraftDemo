@@ -1,0 +1,288 @@
+﻿@page "/"
+@inject HttpClient Http
+
+<PageTitle>Home</PageTitle>
+
+<MudContainer Class="mt-8 px-6" MaxWidth="MaxWidth.False">
+    <MudGrid>
+        <MudItem xs="6">
+            <MudPaper Class="mud-width-full pa-4" Elevation="0" Outlined="true">
+                <CategoryBarChart TItem="MFRRCapacityMarketRecord"
+                                  Items="allPrices.MFRRRecords"
+                                  XDateSelector="x => x.TimeUTC"
+                                  Series="mfrrSeries"
+                                  Height="320"
+                                  Horizontal="false"
+                                  Stacked="true"
+                                  XAxisTitle="Time"
+                                  YAxisTitle="Price (EUR)"
+                                  YMin="-200"
+                                  YMax="200"/>
+            </MudPaper>
+        </MudItem>
+
+        <MudItem xs="6">
+            <MudPaper Class="mud-width-full pa-4" Elevation="0" Outlined="true">
+                <CategoryBarChart TItem="AfrrReservesNordicRecord"
+                                  Items="allPrices.records"
+                                  XDateSelector="x => x.TimeUTC"
+                                  Series="afrrSeries"
+                                  Height="320"
+                                  Horizontal="false"
+                                  Stacked="true"
+                                  XAxisTitle="Time"
+                                  YAxisTitle="Price (EUR)"
+                                  YMin="-100"
+                                  YMax="100"/>
+            </MudPaper>
+        </MudItem>
+
+        <MudItem xs="12">
+            <MudPaper Class="mud-width-full pa-4" Elevation="0" Outlined="true">
+                <ApexChart TItem="ImbalancePriceRecord" Options="@imbalanceOptions">
+                    <ApexPointSeries TItem="ImbalancePriceRecord"
+                                     Items="imbalanceDk1"
+                                     Name="Spot Price (EUR)"
+                                     SeriesType="SeriesType.Area"
+                                     XValue="x => ToUnixTimeMillisecondsUtc(x.TimeUTC)"
+                                     YValue="x => x.SpotPriceEUR" />
+
+                    <ApexPointSeries TItem="ImbalancePriceRecord"
+                                     Items="imbalanceDk1"
+                                     Name="Imbalance Price (EUR)"
+                                     SeriesType="SeriesType.Area"
+                                     XValue="x => ToUnixTimeMillisecondsUtc(x.TimeUTC)"
+                                     YValue="x => x.ImbalancePriceEUR" />
+                </ApexChart>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+@code{
+
+    private int limit = 50;
+
+    private PriceResponse allPrices = new();
+
+    private IReadOnlyList<CategoryBarSeries<MFRRCapacityMarketRecord>> mfrrSeries =
+    [
+        new("Up Price", x => x.UpPriceEUR),
+        new("Down Price", x => x.DownPriceEUR, Negate: true),
+    ];
+
+    private IReadOnlyList<CategoryBarSeries<AfrrReservesNordicRecord>> afrrSeries =
+    [
+        new("Up Price", x => x.UpPriceEUR),
+        new("Down Price", x => x.DownPriceEUR, Negate: true),
+    ];
+
+    private ApexChartOptions<ImbalancePriceRecord> imbalanceOptions = new()
+    {
+        Chart = new Chart
+        {
+            Type = ApexCharts.ChartType.Area,
+            Height = 360,
+            Stacked = false,
+        },
+        Stroke = new Stroke
+        {
+            Curve = Curve.Smooth,
+            Width = 2
+        },
+        Fill = new Fill
+        {
+            Opacity = 0.35
+        },
+        DataLabels = new DataLabels
+        {
+            Enabled = false
+        },
+        Xaxis = new XAxis
+        {
+            Type = XAxisType.Datetime,
+            Title = new AxisTitle { Text = "Time" },
+            Labels = new XAxisLabels
+            {
+                DatetimeUTC = true,
+                Format = "HH:mm",
+                HideOverlappingLabels = true,
+                ShowDuplicates = false
+            }
+        },
+        Yaxis = new List<YAxis>
+        {
+            new()
+            {
+                Title = new AxisTitle { Text = "EUR" }
+            }
+        }
+    };
+
+    private static long ToUnixTimeMillisecondsUtc(DateTime value)
+    {
+        var utcValue = value.Kind switch
+        {
+            DateTimeKind.Utc => value,
+            DateTimeKind.Local => value.ToUniversalTime(),
+            _ => DateTime.SpecifyKind(value, DateTimeKind.Utc)
+        };
+
+        return new DateTimeOffset(utcValue).ToUnixTimeMilliseconds();
+    }
+
+    private IReadOnlyList<ImbalancePriceRecord> imbalanceDk1 = Array.Empty<ImbalancePriceRecord>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var imbalanceTask = Http.GetFromJsonAsync<ImbalancePriceResponse>(
+            $"https://api.energidataservice.dk/dataset/ImbalancePrice?limit={limit}&filter={{\"PriceArea\":[\"DK1\"]}}&sort=TimeUTC%20DESC");
+
+        var mfrrTask = Http.GetFromJsonAsync<MFRRCapacityMarketResponse>(
+            $"https://api.energidataservice.dk/dataset/mFRRCapacityMarket?limit={limit}&filter={{\"PriceArea\":[\"DK1\"]}}&sort=TimeUTC%20DESC");
+
+        var afrrTask = Http.GetFromJsonAsync<AfrrReservesNordicResponse>(
+            $"https://api.energidataservice.dk/dataset/AfrrReservesNordic?limit={limit}&filter={{\"PriceArea\":[\"DK1\"]}}&sort=TimeUTC%20DESC");
+
+        await Task.WhenAll(imbalanceTask, mfrrTask, afrrTask);
+
+        allPrices = new PriceResponse
+        {
+            ImbalancePriceRecords = imbalanceTask.Result?.records?
+                .OrderBy(x => x.TimeUTC)
+                .ToList() ?? new(),
+
+            MFRRRecords = mfrrTask.Result?.records?
+                .OrderBy(x => x.TimeUTC)
+                .ToList() ?? new(),
+
+            records = afrrTask.Result?.records?
+                .OrderBy(x => x.TimeUTC)
+                .ToList() ?? new()
+        };
+
+        // The dataset contains multiple price areas interleaved (DK1/DK2). Drawing both as one series looks "spiky".
+        // Pick one area for the demo (DK1).
+        imbalanceDk1 = allPrices.ImbalancePriceRecords
+            .Where(x => string.Equals(x.PriceArea, "DK1", StringComparison.OrdinalIgnoreCase))
+            .ToArray();
+    }
+
+
+    public class PriceResponse
+    {
+        public List<ImbalancePriceRecord> ImbalancePriceRecords { get; set; } = new();
+        public List<MFRRCapacityMarketRecord> MFRRRecords { get; set; } = new();
+        public List<AfrrReservesNordicRecord> records { get; set; } = new();
+    }
+    
+    public class ImbalancePriceResponse
+    {
+        public List<ImbalancePriceRecord> records { get; set; } = new();
+    }
+
+    public class MFRRCapacityMarketResponse
+    {
+        public List<MFRRCapacityMarketRecord> records { get; set; } = new();
+    }
+
+    public class AfrrReservesNordicResponse
+    {
+        public List<AfrrReservesNordicRecord> records { get; set; } = new();
+    }
+    
+    public class ImbalancePriceRecord
+    {
+        public DateTime TimeUTC { get; set; }
+
+        public DateTime TimeDK { get; set; }
+
+        public string PriceArea { get; set; } = null!;
+
+        public decimal? BalancingDemand { get; set; }
+
+        public decimal? ImbalancePriceEUR { get; set; }
+
+        public decimal? ImbalancePriceDKK { get; set; }
+
+        public decimal? SpotPriceEUR { get; set; }
+
+        public int? DominatingDirection { get; set; }
+
+        public decimal? aFRRUpMW { get; set; }
+
+        public decimal? aFRRVWAUpEUR { get; set; }
+
+        public decimal? aFRRVWAUpDKK { get; set; }
+
+        public decimal? aFRRDownMW { get; set; }
+
+        public decimal? aFRRVWADownEUR { get; set; }
+
+        public decimal? aFRRVWADownDKK { get; set; }
+
+        public decimal? mFRRMarginalPriceUpEUR { get; set; }
+
+        public decimal? mFRRMarginalPriceUpDKK { get; set; }
+
+        public decimal? mFRRMarginalPriceDownEUR { get; set; }
+
+        public decimal? mFRRMarginalPriceDownDKK { get; set; }
+    }
+    
+    public class MFRRCapacityMarketRecord
+    {
+        public DateTime TimeUTC { get; set; }
+
+        public DateTime TimeDK { get; set; }
+
+        public string PriceArea { get; set; } = null!;
+
+        public decimal? UpDemandMW { get; set; }
+
+        public decimal? UpProcuredMW { get; set; }
+
+        public decimal? UpPriceEUR { get; set; }
+
+        public decimal? UpPriceDKK { get; set; }
+
+        public decimal? DownDemandMW { get; set; }
+
+        public decimal? DownProcuredMW { get; set; }
+
+        public decimal? DownPriceEUR { get; set; }
+
+        public decimal? DownPriceDKK { get; set; }
+        
+        public string TimeLabel => TimeDK.ToString("HH:mm");
+
+    }
+
+    public class AfrrReservesNordicRecord
+    {
+        public DateTime TimeUTC { get; set; }
+
+        public DateTime TimeDK { get; set; }
+
+        public string PriceArea { get; set; } = null!;
+
+        public decimal? UpDemandMW { get; set; }
+
+        public decimal? UpProcuredMW { get; set; }
+
+        public decimal? UpPriceEUR { get; set; }
+
+        public decimal? UpPriceDKK { get; set; }
+
+        public decimal? DownDemandMW { get; set; }
+
+        public decimal? DownProcuredMW { get; set; }
+
+        public decimal? DownPriceEUR { get; set; }
+
+        public decimal? DownPriceDKK { get; set; }
+
+        public string TimeLabel => TimeDK.ToString("HH:mm");
+    }
+
+    
+}

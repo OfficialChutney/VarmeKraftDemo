@@ -1,0 +1,183 @@
+@typeparam TItem where TItem : class
+
+@if (XSelector is null && XDateSelector is null)
+{
+    <div class="alert alert-danger" role="alert">
+        XSelector or XDateSelector is required.
+    </div>
+}
+else if (XSelector is not null && XDateSelector is not null)
+{
+    <div class="alert alert-danger" role="alert">
+        Use either XSelector or XDateSelector (not both).
+    </div>
+}
+else if (Series.Count == 0)
+{
+    <div class="alert alert-warning" role="alert">
+        No series configured.
+    </div>
+}
+else
+{
+    <ApexChart TItem="TItem" Options="@options" @key="renderKey">
+        @foreach (var series in Series)
+        {
+            <ApexPointSeries TItem="TItem"
+                             Items="orderedItems"
+                             Name="@series.Name"
+                             SeriesType="SeriesType.Bar"
+                             XValue="item => GetXValue(item)"
+                             YValue="item => GetValue(series, item)" />
+        }
+    </ApexChart>
+}
+
+@code {
+    [Parameter] public IReadOnlyList<TItem> Items { get; set; } = Array.Empty<TItem>();
+    [Parameter] public Func<TItem, string>? XSelector { get; set; }
+    [Parameter] public Func<TItem, DateTime>? XDateSelector { get; set; }
+    [Parameter] public IReadOnlyList<CategoryBarSeries<TItem>> Series { get; set; } = Array.Empty<CategoryBarSeries<TItem>>();
+
+    [Parameter] public int Height { get; set; } = 600;
+    [Parameter] public bool Horizontal { get; set; }
+    [Parameter] public bool Stacked { get; set; }
+
+    [Parameter] public string XAxisTitle { get; set; } = "Category";
+    [Parameter] public string YAxisTitle { get; set; } = "Value";
+
+    [Parameter] public string DateTimeLabelFormat { get; set; } = "HH:mm";
+
+    [Parameter] public double? YMin { get; set; }
+    [Parameter] public double? YMax { get; set; }
+
+    private ApexChartOptions<TItem> options = new();
+    private string renderKey = Guid.NewGuid().ToString("N");
+    private IReadOnlyList<TItem> orderedItems = Array.Empty<TItem>();
+
+    protected override void OnParametersSet()
+    {
+        options = BuildOptions();
+        orderedItems = OrderItems();
+        // ApexCharts sometimes needs a remount when swapping datasets/series.
+        renderKey = $"{Items.Count}-{Series.Count}-{Height}-{Horizontal}-{Stacked}-{YAxisTitle}-{XAxisTitle}-{(XDateSelector is null ? "cat" : "dt")}";
+    }
+
+    private ApexChartOptions<TItem> BuildOptions()
+    {
+        return new ApexChartOptions<TItem>
+        {
+            Chart = new Chart
+            {
+                Type = ApexCharts.ChartType.Bar,
+                Height = Height,
+                Stacked = Stacked
+            },
+            PlotOptions = new PlotOptions
+            {
+                Bar = new PlotOptionsBar
+                {
+                    Horizontal = Horizontal,
+                    ColumnWidth = "70%",
+                    BarHeight = "80%"
+                }
+            },
+            DataLabels = new DataLabels
+            {
+                Enabled = false
+            },
+            Xaxis = BuildXAxis(),
+            Yaxis = new List<YAxis>
+            {
+                new()
+                {
+                    Title = new AxisTitle { Text = YAxisTitle },
+                    Min = YMin,
+                    Max = YMax
+                }
+            }
+        };
+    }
+
+    private XAxis BuildXAxis()
+    {
+        if (XDateSelector is not null)
+        {
+            return new XAxis
+            {
+                Type = XAxisType.Datetime,
+                Title = new AxisTitle { Text = XAxisTitle },
+                Labels = new XAxisLabels
+                {
+                    DatetimeUTC = false,
+                    Format = DateTimeLabelFormat,
+                    HideOverlappingLabels = true,
+                    ShowDuplicates = false
+                }
+            };
+        }
+
+        return new XAxis
+        {
+            Type = XAxisType.Category,
+            Title = new AxisTitle { Text = XAxisTitle },
+            Labels = new XAxisLabels
+            {
+                Rotate = -45,
+                HideOverlappingLabels = true,
+                Trim = true
+            }
+        };
+    }
+
+    private object GetXValue(TItem item)
+    {
+        if (XDateSelector is not null)
+        {
+            var dt = XDateSelector(item);
+            return ToUnixTimeMilliseconds(dt);
+        }
+
+        return XSelector!(item);
+    }
+
+    private IReadOnlyList<TItem> OrderItems()
+    {
+        if (Items.Count == 0)
+        {
+            return Items;
+        }
+
+        if (XDateSelector is not null)
+        {
+            // Avoid side effects / multiple enumeration; sort once per parameter set.
+            return Items.OrderBy(XDateSelector).ToArray();
+        }
+
+        // If using categories, keep the provided order (caller may already have sorted).
+        return Items;
+    }
+
+    private static long ToUnixTimeMilliseconds(DateTime value)
+    {
+        var utcValue = value.Kind switch
+        {
+            DateTimeKind.Utc => value,
+            DateTimeKind.Local => value.ToUniversalTime(),
+            _ => DateTime.SpecifyKind(value, DateTimeKind.Utc)
+        };
+
+        return new DateTimeOffset(utcValue).ToUnixTimeMilliseconds();
+    }
+
+    private static decimal? GetValue(CategoryBarSeries<TItem> series, TItem item)
+    {
+        var value = series.YSelector(item);
+        if (value is null)
+        {
+            return null;
+        }
+
+        return series.Negate ? -value.Value : value.Value;
+    }
+}

@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "varmekraftDemo.Application/1.0.0": {
+        "dependencies": {
+          "varmekraftDemo.Domain": "1.0.0"
+        },
+        "runtime": {
+          "varmekraftDemo.Application.dll": {}
+        }
+      },
+      "varmekraftDemo.Domain/1.0.0": {
+        "runtime": {
+          "varmekraftDemo.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "varmekraftDemo.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "varmekraftDemo.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

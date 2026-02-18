@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\varmekaftDemo.Infrastructure\varmekraftDemo.Infrastructure.csproj" />
+    <ProjectReference Include="..\varmekraftDemo.Application\varmekraftDemo.Application.csproj" />
+    <ProjectReference Include="..\varmekraftDemo.Domain\varmekraftDemo.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Blazor-ApexCharts" Version="6.1.0" />
+    <PackageReference Include="MudBlazor" Version="8.15.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Components\Pages\AfrrMfrr\" />
+  </ItemGroup>
+
+</Project>

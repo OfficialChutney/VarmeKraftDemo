@@ -1,0 +1,190 @@
+﻿@page "/imbalanceprices"
+@inject HttpClient Http
+
+<MudContainer Class="mt-4 px-4" MaxWidth="MaxWidth.False">
+    <MudPaper Elevation="0">
+
+        <MudDataGrid T="ImbalancePriceRecord"
+                     Items="@marketPrices"
+                     Dense="true"
+                     Hover="true"
+                     Bordered="true"
+                     Striped="true"
+                     Class="dense-grid">
+
+            <Columns>
+
+                <PropertyColumn Property="x => x.TimeDK" Title="Time DK">
+                    <CellTemplate>
+                        <span style="font-size: 0.75rem;">@context.Item.TimeDK.ToString("HH:mm")</span>
+                    </CellTemplate>
+                </PropertyColumn>
+
+                <PropertyColumn Property="x => x.BalancingDemand" Title="Demand">
+                    <CellTemplate>
+                        <span style="font-size: 0.75rem;">@FormatValue(context.Item.BalancingDemand)</span>
+                    </CellTemplate>
+                </PropertyColumn>
+
+                <PropertyColumn Property="x => x.ImbalancePriceEUR" Title="Imb €">
+                    <CellTemplate>
+                        <span style="font-size: 0.75rem;">@FormatValue(context.Item.ImbalancePriceEUR)</span>
+                    </CellTemplate>
+                </PropertyColumn>
+                
+                <PropertyColumn Property="x => x.ImbalancePriceDKK" Title="Imb kr">
+                    <CellTemplate>
+                        <span style="font-size: 0.75rem;">@FormatValue(context.Item.ImbalancePriceDKK)</span>
+                    </CellTemplate>
+                </PropertyColumn>
+
+                <PropertyColumn Property="x => x.SpotPriceEUR" Title="Spot €">
+                    <CellTemplate>
+                        <span style="font-size: 0.75rem;">@FormatValue(context.Item.SpotPriceEUR)</span>
+                    </CellTemplate>
+                </PropertyColumn>
+
+                <PropertyColumn Property="x => x.DominatingDirection" Title="Dir">
+                    <CellTemplate>
+                        <span style="font-size: 0.75rem;">@GetDirectionSymbol(context.Item.DominatingDirection)</span>
+                    </CellTemplate>
+                </PropertyColumn>
+
+                <PropertyColumn Property="x => x.aFRRUpMW" Title="↑MW">
+                    <CellTemplate>
+                        <span style="font-size: 0.75rem;">@FormatValue(context.Item.aFRRUpMW)</span>
+                    </CellTemplate>
+                </PropertyColumn>
+                
+                <PropertyColumn Property="x => x.aFRRVWAUpEUR" Title="↑€">
+                    <CellTemplate>
+                        <span style="font-size: 0.75rem;">@FormatValue(context.Item.aFRRVWAUpEUR)</span>
+                    </CellTemplate>
+                </PropertyColumn>
+                
+                <PropertyColumn Property="x => x.aFRRVWAUpDKK" Title="↑kr">
+                    <CellTemplate>
+                        <span style="font-size: 0.75rem;">@FormatValue(context.Item.aFRRVWAUpDKK)</span>
+                    </CellTemplate>
+                </PropertyColumn>
+
+                <PropertyColumn Property="x => x.aFRRDownMW" Title="↓MW">
+                    <CellTemplate>
+                        <span style="font-size: 0.75rem;">@FormatValue(context.Item.aFRRDownMW)</span>
+                    </CellTemplate>
+                </PropertyColumn>
+                
+                <PropertyColumn Property="x => x.aFRRVWADownEUR" Title="↓€">
+                    <CellTemplate>
+                        <span style="font-size: 0.75rem;">@FormatValue(context.Item.aFRRVWADownEUR)</span>
+                    </CellTemplate>
+                </PropertyColumn>
+                
+                <PropertyColumn Property="x => x.aFRRVWADownDKK" Title="↓kr">
+                    <CellTemplate>
+                        <span style="font-size: 0.75rem;">@FormatValue(context.Item.aFRRVWADownDKK)</span>
+                    </CellTemplate>
+                </PropertyColumn>
+
+                <PropertyColumn Property="x => x.mFRRMarginalPriceUpEUR" Title="m↑€">
+                    <CellTemplate>
+                        <span style="font-size: 0.75rem;">@FormatValue(context.Item.mFRRMarginalPriceUpEUR)</span>
+                    </CellTemplate>
+                </PropertyColumn>
+                
+                <PropertyColumn Property="x => x.mFRRMarginalPriceUpDKK" Title="m↑kr">
+                    <CellTemplate>
+                        <span style="font-size: 0.75rem;">@FormatValue(context.Item.mFRRMarginalPriceUpDKK)</span>
+                    </CellTemplate>
+                </PropertyColumn>
+
+                <PropertyColumn Property="x => x.mFRRMarginalPriceDownEUR" Title="m↓€">
+                    <CellTemplate>
+                        <span style="font-size: 0.75rem;">@FormatValue(context.Item.mFRRMarginalPriceDownEUR)</span>
+                    </CellTemplate>
+                </PropertyColumn>
+                
+                <PropertyColumn Property="x => x.mFRRMarginalPriceDownDKK" Title="m↓kr">
+                    <CellTemplate>
+                        <span style="font-size: 0.75rem;">@FormatValue(context.Item.mFRRMarginalPriceDownDKK)</span>
+                    </CellTemplate>
+                </PropertyColumn>
+
+            </Columns>
+
+        </MudDataGrid>
+
+    </MudPaper>
+</MudContainer>
+
+<style>
+    .dense-grid .mud-table-cell {
+        padding: 2px 4px !important;
+        font-size: 0.75rem;
+    }
+    
+    .dense-grid .mud-table-head .mud-table-cell {
+        font-size: 0.7rem;
+        font-weight: bold;
+        padding: 4px 4px !important;
+        white-space: nowrap;
+    }
+</style>
+
+@code {
+
+    string url = "https://api.energidataservice.dk/dataset/ImbalancePrice?limit=100&sort=TimeUTC%20DESC";
+
+    private List<ImbalancePriceRecord> marketPrices = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var response = await Http.GetFromJsonAsync<ImbalancePriceResponse>(url);
+
+        if (response != null)
+            marketPrices = response.records;
+    }
+
+    private string FormatValue(decimal? value)
+    {
+        return value?.ToString("0.##") ?? "-";
+    }
+
+    private string GetDirectionSymbol(int? direction)
+    {
+        return direction switch
+        {
+            1 => "↑",
+            -1 => "↓",
+            _ => "-"
+        };
+    }
+
+    public class ImbalancePriceResponse
+    {
+        public List<ImbalancePriceRecord> records { get; set; } = new();
+    }
+
+    public class ImbalancePriceRecord
+    {
+        public DateTime TimeUTC { get; set; }
+        public DateTime TimeDK { get; set; }
+        public string PriceArea { get; set; } = null!;
+        public decimal? BalancingDemand { get; set; }
+        public decimal? ImbalancePriceEUR { get; set; }
+        public decimal? ImbalancePriceDKK { get; set; }
+        public decimal? SpotPriceEUR { get; set; }
+        public int? DominatingDirection { get; set; }
+        public decimal? aFRRUpMW { get; set; }
+        public decimal? aFRRVWAUpEUR { get; set; }
+        public decimal? aFRRVWAUpDKK { get; set; }
+        public decimal? aFRRDownMW { get; set; }
+        public decimal? aFRRVWADownEUR { get; set; }
+        public decimal? aFRRVWADownDKK { get; set; }
+        public decimal? mFRRMarginalPriceUpEUR { get; set; }
+        public decimal? mFRRMarginalPriceUpDKK { get; set; }
+        public decimal? mFRRMarginalPriceDownEUR { get; set; }
+        public decimal? mFRRMarginalPriceDownDKK { get; set; }
+    }
+
+}

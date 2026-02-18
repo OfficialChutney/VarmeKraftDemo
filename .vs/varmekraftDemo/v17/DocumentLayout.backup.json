@@ -1,0 +1,369 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{70E9F7A1-BA12-4211-B0A4-12117976A36A}|varmekraftDemo.Web\\varmekraftDemo.Web.csproj|c:\\users\\alfre\\documents\\git projects\\varmekraftdemo\\varmekraftdemo\\varmekraftdemo.web\\components\\pages\\reports\\reports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{70E9F7A1-BA12-4211-B0A4-12117976A36A}|varmekraftDemo.Web\\varmekraftDemo.Web.csproj|solutionrelative:varmekraftdemo.web\\components\\pages\\reports\\reports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70E9F7A1-BA12-4211-B0A4-12117976A36A}|varmekraftDemo.Web\\varmekraftDemo.Web.csproj|c:\\users\\alfre\\documents\\git projects\\varmekraftdemo\\varmekraftdemo\\varmekraftdemo.web\\components\\pages\\settings\\settings.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{70E9F7A1-BA12-4211-B0A4-12117976A36A}|varmekraftDemo.Web\\varmekraftDemo.Web.csproj|solutionrelative:varmekraftdemo.web\\components\\pages\\settings\\settings.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70E9F7A1-BA12-4211-B0A4-12117976A36A}|varmekraftDemo.Web\\varmekraftDemo.Web.csproj|c:\\users\\alfre\\documents\\git projects\\varmekraftdemo\\varmekraftdemo\\varmekraftdemo.web\\components\\pages\\forecast\\forecast.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{70E9F7A1-BA12-4211-B0A4-12117976A36A}|varmekraftDemo.Web\\varmekraftDemo.Web.csproj|solutionrelative:varmekraftdemo.web\\components\\pages\\forecast\\forecast.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70E9F7A1-BA12-4211-B0A4-12117976A36A}|varmekraftDemo.Web\\varmekraftDemo.Web.csproj|c:\\users\\alfre\\documents\\git projects\\varmekraftdemo\\varmekraftdemo\\varmekraftdemo.web\\components\\pages\\productionunits\\productionunits.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{70E9F7A1-BA12-4211-B0A4-12117976A36A}|varmekraftDemo.Web\\varmekraftDemo.Web.csproj|solutionrelative:varmekraftdemo.web\\components\\pages\\productionunits\\productionunits.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70E9F7A1-BA12-4211-B0A4-12117976A36A}|varmekraftDemo.Web\\varmekraftDemo.Web.csproj|c:\\users\\alfre\\documents\\git projects\\varmekraftdemo\\varmekraftdemo\\varmekraftdemo.web\\components\\pages\\marketprices\\marketprices.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{70E9F7A1-BA12-4211-B0A4-12117976A36A}|varmekraftDemo.Web\\varmekraftDemo.Web.csproj|solutionrelative:varmekraftdemo.web\\components\\pages\\marketprices\\marketprices.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70E9F7A1-BA12-4211-B0A4-12117976A36A}|varmekraftDemo.Web\\varmekraftDemo.Web.csproj|c:\\users\\alfre\\documents\\git projects\\varmekraftdemo\\varmekraftdemo\\varmekraftdemo.web\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{70E9F7A1-BA12-4211-B0A4-12117976A36A}|varmekraftDemo.Web\\varmekraftDemo.Web.csproj|solutionrelative:varmekraftdemo.web\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70E9F7A1-BA12-4211-B0A4-12117976A36A}|varmekraftDemo.Web\\varmekraftDemo.Web.csproj|c:\\users\\alfre\\documents\\git projects\\varmekraftdemo\\varmekraftdemo\\varmekraftdemo.web\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{70E9F7A1-BA12-4211-B0A4-12117976A36A}|varmekraftDemo.Web\\varmekraftDemo.Web.csproj|solutionrelative:varmekraftdemo.web\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70E9F7A1-BA12-4211-B0A4-12117976A36A}|varmekraftDemo.Web\\varmekraftDemo.Web.csproj|c:\\users\\alfre\\documents\\git projects\\varmekraftdemo\\varmekraftdemo\\varmekraftdemo.web\\components\\routes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{70E9F7A1-BA12-4211-B0A4-12117976A36A}|varmekraftDemo.Web\\varmekraftDemo.Web.csproj|solutionrelative:varmekraftdemo.web\\components\\routes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70E9F7A1-BA12-4211-B0A4-12117976A36A}|varmekraftDemo.Web\\varmekraftDemo.Web.csproj|c:\\users\\alfre\\documents\\git projects\\varmekraftdemo\\varmekraftdemo\\varmekraftdemo.web\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{70E9F7A1-BA12-4211-B0A4-12117976A36A}|varmekraftDemo.Web\\varmekraftDemo.Web.csproj|solutionrelative:varmekraftdemo.web\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70E9F7A1-BA12-4211-B0A4-12117976A36A}|varmekraftDemo.Web\\varmekraftDemo.Web.csproj|c:\\users\\alfre\\documents\\git projects\\varmekraftdemo\\varmekraftdemo\\varmekraftdemo.web\\components\\layout\\navmenu.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{70E9F7A1-BA12-4211-B0A4-12117976A36A}|varmekraftDemo.Web\\varmekraftDemo.Web.csproj|solutionrelative:varmekraftdemo.web\\components\\layout\\navmenu.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70E9F7A1-BA12-4211-B0A4-12117976A36A}|varmekraftDemo.Web\\varmekraftDemo.Web.csproj|c:\\users\\alfre\\documents\\git projects\\varmekraftdemo\\varmekraftdemo\\varmekraftdemo.web\\components\\layout\\mainlayout.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{70E9F7A1-BA12-4211-B0A4-12117976A36A}|varmekraftDemo.Web\\varmekraftDemo.Web.csproj|solutionrelative:varmekraftdemo.web\\components\\layout\\mainlayout.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70E9F7A1-BA12-4211-B0A4-12117976A36A}|varmekraftDemo.Web\\varmekraftDemo.Web.csproj|c:\\users\\alfre\\documents\\git projects\\varmekraftdemo\\varmekraftdemo\\varmekraftdemo.web\\components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{70E9F7A1-BA12-4211-B0A4-12117976A36A}|varmekraftDemo.Web\\varmekraftDemo.Web.csproj|solutionrelative:varmekraftdemo.web\\components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70E9F7A1-BA12-4211-B0A4-12117976A36A}|varmekraftDemo.Web\\varmekraftDemo.Web.csproj|c:\\users\\alfre\\documents\\git projects\\varmekraftdemo\\varmekraftdemo\\varmekraftdemo.web\\components\\defaulttheme.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70E9F7A1-BA12-4211-B0A4-12117976A36A}|varmekraftDemo.Web\\varmekraftDemo.Web.csproj|solutionrelative:varmekraftdemo.web\\components\\defaulttheme.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70E9F7A1-BA12-4211-B0A4-12117976A36A}|varmekraftDemo.Web\\varmekraftDemo.Web.csproj|c:\\users\\alfre\\documents\\git projects\\varmekraftdemo\\varmekraftdemo\\varmekraftdemo.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70E9F7A1-BA12-4211-B0A4-12117976A36A}|varmekraftDemo.Web\\varmekraftDemo.Web.csproj|solutionrelative:varmekraftdemo.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2BC16170-AF04-48DF-B506-0A42BF62C532}|varmekraftDemo.Domain\\varmekraftDemo.Domain.csproj|c:\\users\\alfre\\documents\\git projects\\varmekraftdemo\\varmekraftdemo\\varmekraftdemo.domain\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2BC16170-AF04-48DF-B506-0A42BF62C532}|varmekraftDemo.Domain\\varmekraftDemo.Domain.csproj|solutionrelative:varmekraftdemo.domain\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D742D84E-C33D-4D6B-A6DE-BE3D3E864317}|varmekaftDemo.Infrastructure\\varmekraftDemo.Infrastructure.csproj|c:\\users\\alfre\\documents\\git projects\\varmekraftdemo\\varmekraftdemo\\varmekaftdemo.infrastructure\\varmekraftdemo.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{D742D84E-C33D-4D6B-A6DE-BE3D3E864317}|varmekaftDemo.Infrastructure\\varmekraftDemo.Infrastructure.csproj|solutionrelative:varmekaftdemo.infrastructure\\varmekraftdemo.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2BC16170-AF04-48DF-B506-0A42BF62C532}|varmekraftDemo.Domain\\varmekraftDemo.Domain.csproj|c:\\users\\alfre\\documents\\git projects\\varmekraftdemo\\varmekraftdemo\\varmekraftdemo.domain\\varmekraftdemo.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{2BC16170-AF04-48DF-B506-0A42BF62C532}|varmekraftDemo.Domain\\varmekraftDemo.Domain.csproj|solutionrelative:varmekraftdemo.domain\\varmekraftdemo.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D76CE2A-3D5B-4721-9076-56F014F1609A}|varmekraftDemo.Application\\varmekraftDemo.Application.csproj|c:\\users\\alfre\\documents\\git projects\\varmekraftdemo\\varmekraftdemo\\varmekraftdemo.application\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D76CE2A-3D5B-4721-9076-56F014F1609A}|varmekraftDemo.Application\\varmekraftDemo.Application.csproj|solutionrelative:varmekraftdemo.application\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D742D84E-C33D-4D6B-A6DE-BE3D3E864317}|varmekaftDemo.Infrastructure\\varmekraftDemo.Infrastructure.csproj|c:\\users\\alfre\\documents\\git projects\\varmekraftdemo\\varmekraftdemo\\varmekaftdemo.infrastructure\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D742D84E-C33D-4D6B-A6DE-BE3D3E864317}|varmekaftDemo.Infrastructure\\varmekraftDemo.Infrastructure.csproj|solutionrelative:varmekaftdemo.infrastructure\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 764,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Reports.razor",
+              "DocumentMoniker": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekraftDemo.Web\\Components\\Pages\\Reports\\Reports.razor",
+              "RelativeDocumentMoniker": "varmekraftDemo.Web\\Components\\Pages\\Reports\\Reports.razor",
+              "ToolTip": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekraftDemo.Web\\Components\\Pages\\Reports\\Reports.razor",
+              "RelativeToolTip": "varmekraftDemo.Web\\Components\\Pages\\Reports\\Reports.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-17T12:10:25.954Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Settings.razor",
+              "DocumentMoniker": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekraftDemo.Web\\Components\\Pages\\Settings\\Settings.razor",
+              "RelativeDocumentMoniker": "varmekraftDemo.Web\\Components\\Pages\\Settings\\Settings.razor",
+              "ToolTip": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekraftDemo.Web\\Components\\Pages\\Settings\\Settings.razor",
+              "RelativeToolTip": "varmekraftDemo.Web\\Components\\Pages\\Settings\\Settings.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-17T12:09:51.677Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Forecast.razor",
+              "DocumentMoniker": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekraftDemo.Web\\Components\\Pages\\Forecast\\Forecast.razor",
+              "RelativeDocumentMoniker": "varmekraftDemo.Web\\Components\\Pages\\Forecast\\Forecast.razor",
+              "ToolTip": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekraftDemo.Web\\Components\\Pages\\Forecast\\Forecast.razor",
+              "RelativeToolTip": "varmekraftDemo.Web\\Components\\Pages\\Forecast\\Forecast.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-17T12:08:47.602Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ProductionUnits.razor",
+              "DocumentMoniker": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekraftDemo.Web\\Components\\Pages\\ProductionUnits\\ProductionUnits.razor",
+              "RelativeDocumentMoniker": "varmekraftDemo.Web\\Components\\Pages\\ProductionUnits\\ProductionUnits.razor",
+              "ToolTip": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekraftDemo.Web\\Components\\Pages\\ProductionUnits\\ProductionUnits.razor",
+              "RelativeToolTip": "varmekraftDemo.Web\\Components\\Pages\\ProductionUnits\\ProductionUnits.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-17T12:08:23.093Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MarketPrices.razor",
+              "DocumentMoniker": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekraftDemo.Web\\Components\\Pages\\MarketPrices\\MarketPrices.razor",
+              "RelativeDocumentMoniker": "varmekraftDemo.Web\\Components\\Pages\\MarketPrices\\MarketPrices.razor",
+              "ToolTip": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekraftDemo.Web\\Components\\Pages\\MarketPrices\\MarketPrices.razor",
+              "RelativeToolTip": "varmekraftDemo.Web\\Components\\Pages\\MarketPrices\\MarketPrices.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-17T12:07:54.3Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Routes.razor",
+              "DocumentMoniker": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekraftDemo.Web\\Components\\Routes.razor",
+              "RelativeDocumentMoniker": "varmekraftDemo.Web\\Components\\Routes.razor",
+              "ToolTip": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekraftDemo.Web\\Components\\Routes.razor",
+              "RelativeToolTip": "varmekraftDemo.Web\\Components\\Routes.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-17T12:03:11.181Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "NavMenu.razor.css",
+              "DocumentMoniker": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekraftDemo.Web\\Components\\Layout\\NavMenu.razor.css",
+              "RelativeDocumentMoniker": "varmekraftDemo.Web\\Components\\Layout\\NavMenu.razor.css",
+              "ToolTip": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekraftDemo.Web\\Components\\Layout\\NavMenu.razor.css",
+              "RelativeToolTip": "varmekraftDemo.Web\\Components\\Layout\\NavMenu.razor.css",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAAwGgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-02-17T11:57:38.886Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "MainLayout.razor.css",
+              "DocumentMoniker": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekraftDemo.Web\\Components\\Layout\\MainLayout.razor.css",
+              "RelativeDocumentMoniker": "varmekraftDemo.Web\\Components\\Layout\\MainLayout.razor.css",
+              "ToolTip": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekraftDemo.Web\\Components\\Layout\\MainLayout.razor.css",
+              "RelativeToolTip": "varmekraftDemo.Web\\Components\\Layout\\MainLayout.razor.css",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAAwGIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-02-17T11:57:27.03Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "_Imports.razor",
+              "DocumentMoniker": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekraftDemo.Web\\Components\\_Imports.razor",
+              "RelativeDocumentMoniker": "varmekraftDemo.Web\\Components\\_Imports.razor",
+              "ToolTip": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekraftDemo.Web\\Components\\_Imports.razor",
+              "RelativeToolTip": "varmekraftDemo.Web\\Components\\_Imports.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-17T11:40:58.696Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekraftDemo.Web\\Components\\Layout\\MainLayout.razor",
+              "RelativeDocumentMoniker": "varmekraftDemo.Web\\Components\\Layout\\MainLayout.razor",
+              "ToolTip": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekraftDemo.Web\\Components\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "varmekraftDemo.Web\\Components\\Layout\\MainLayout.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-09T15:47:20.024Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekraftDemo.Web\\Components\\Layout\\NavMenu.razor",
+              "RelativeDocumentMoniker": "varmekraftDemo.Web\\Components\\Layout\\NavMenu.razor",
+              "ToolTip": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekraftDemo.Web\\Components\\Layout\\NavMenu.razor",
+              "RelativeToolTip": "varmekraftDemo.Web\\Components\\Layout\\NavMenu.razor",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACMAAAByAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-17T11:35:39.408Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekraftDemo.Web\\Components\\App.razor",
+              "RelativeDocumentMoniker": "varmekraftDemo.Web\\Components\\App.razor",
+              "ToolTip": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekraftDemo.Web\\Components\\App.razor",
+              "RelativeToolTip": "varmekraftDemo.Web\\Components\\App.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-17T11:35:20.753Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "DefaultTheme.cs",
+              "DocumentMoniker": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekraftDemo.Web\\Components\\DefaultTheme.cs",
+              "RelativeDocumentMoniker": "varmekraftDemo.Web\\Components\\DefaultTheme.cs",
+              "ToolTip": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekraftDemo.Web\\Components\\DefaultTheme.cs",
+              "RelativeToolTip": "varmekraftDemo.Web\\Components\\DefaultTheme.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-17T11:38:31.422Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekraftDemo.Web\\Program.cs",
+              "RelativeDocumentMoniker": "varmekraftDemo.Web\\Program.cs",
+              "ToolTip": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekraftDemo.Web\\Program.cs",
+              "RelativeToolTip": "varmekraftDemo.Web\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T10:20:39.453Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "varmekraftDemo.Infrastructure.csproj",
+              "DocumentMoniker": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekaftDemo.Infrastructure\\varmekraftDemo.Infrastructure.csproj",
+              "RelativeDocumentMoniker": "varmekaftDemo.Infrastructure\\varmekraftDemo.Infrastructure.csproj",
+              "ToolTip": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekaftDemo.Infrastructure\\varmekraftDemo.Infrastructure.csproj",
+              "RelativeToolTip": "varmekaftDemo.Infrastructure\\varmekraftDemo.Infrastructure.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-02-09T09:58:33.72Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekaftDemo.Infrastructure\\Class1.cs",
+              "RelativeDocumentMoniker": "varmekaftDemo.Infrastructure\\Class1.cs",
+              "ToolTip": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekaftDemo.Infrastructure\\Class1.cs",
+              "RelativeToolTip": "varmekaftDemo.Infrastructure\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T09:56:56.742Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekraftDemo.Domain\\Class1.cs",
+              "RelativeDocumentMoniker": "varmekraftDemo.Domain\\Class1.cs",
+              "ToolTip": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekraftDemo.Domain\\Class1.cs",
+              "RelativeToolTip": "varmekraftDemo.Domain\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T09:55:18.432Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "varmekraftDemo.Domain.csproj",
+              "DocumentMoniker": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekraftDemo.Domain\\varmekraftDemo.Domain.csproj",
+              "RelativeDocumentMoniker": "varmekraftDemo.Domain\\varmekraftDemo.Domain.csproj",
+              "ToolTip": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekraftDemo.Domain\\varmekraftDemo.Domain.csproj",
+              "RelativeToolTip": "varmekraftDemo.Domain\\varmekraftDemo.Domain.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-02-09T10:21:54.14Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekraftDemo.Application\\Class1.cs",
+              "RelativeDocumentMoniker": "varmekraftDemo.Application\\Class1.cs",
+              "ToolTip": "C:\\Users\\alfre\\Documents\\Git projects\\varmekraftDemo\\varmekraftDemo\\varmekraftDemo.Application\\Class1.cs",
+              "RelativeToolTip": "varmekraftDemo.Application\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T09:56:23.411Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 510,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:8:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:16:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:17:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:18:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:19:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

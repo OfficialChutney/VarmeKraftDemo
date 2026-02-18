@@ -1,0 +1,126 @@
+﻿﻿
+@rendermode InteractiveServer
+
+@inject NavigationManager Navigation
+
+<MudAppBar Elevation="0" Dense="@_dense" Fixed="true" Class="appbar-outline">
+    <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="MudBlazor.Color.Inherit" Edge="Edge.Start" OnClick="@ToggleDrawer" />
+    <MudBreadcrumbs Items="_items" Color="Color.Inherit"></MudBreadcrumbs>
+
+    <MudSpacer />
+
+    <MudMenu AnchorOrigin="Origin.BottomRight"
+             TransformOrigin="Origin.TopRight">
+        <ActivatorContent>
+            <MudIconButton Icon="@Icons.Material.Filled.Person" Color="MudBlazor.Color.Inherit" />
+        </ActivatorContent>
+        <ChildContent>
+            <MudMenuItem Href="MicrosoftIdentity/Account/SignOut"
+                         Icon="@Icons.Material.Filled.Logout">
+                Log out
+            </MudMenuItem>
+        </ChildContent>
+    </MudMenu>
+</MudAppBar>
+
+<MudDrawer @bind-Open="@_open" 
+            ClipMode="_clipMode" 
+            Elevation="1" 
+            Variant="@DrawerVariant.Mini"
+            OpenMiniOnHover="true"
+            Fixed="true">
+    <MudDrawerHeader Style="display: flex !important; justify-content: center !important; align-items: center !important; width: 100%;">
+        <MudAvatar Class="logo-avatar"
+                   Size="MudBlazor.Size.Small"
+                   Style="width: 48px; height: 48px;">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGRYOT59SPEzcD8BwKiR1BN6q8ABrP273S8w&s"
+                 style="width: 80%; height: 80%; object-fit: contain;" />
+        </MudAvatar>
+        @if (_open)
+        {
+            <MudText Style="white-space: nowrap;" Typo="Typo.h6" Dense="true">HeatPlant Insight</MudText>
+        }
+    </MudDrawerHeader>
+
+    <MudNavMenu Class="d-flex flex-column h-100">
+        <MudNavLink Href="/" Match="NavLinkMatch.All" Style="white-space: nowrap;" Icon="@Icons.Material.Outlined.Speed">Dashboard</MudNavLink>
+        <MudNavLink Href="/imbalanceprices" Match="NavLinkMatch.All" Style="white-space: nowrap;" Icon="@Icons.Material.Filled.Timeline">Imbalance Prices</MudNavLink>
+        <MudNavLink Href="/forecast" Match="NavLinkMatch.All" Style="white-space: nowrap;" Icon="@Icons.Material.Filled.ContentPasteSearch">Prognosis</MudNavLink>
+        <MudNavLink Href="/reports" Match="NavLinkMatch.All" Style="white-space: nowrap;" Icon="@Icons.Material.TwoTone.Numbers">Reports</MudNavLink>
+        
+        <MudSpacer />
+    </MudNavMenu>
+
+
+
+</MudDrawer>
+
+<style>
+    .appbar-outline {
+    }
+
+    .logo-avatar {
+        background-color: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+    }
+
+    .mud-nav-link.active .mud-nav-link-icon,
+    .mud-nav-link.active .mud-nav-link-icon .mud-icon-root,
+    .mud-nav-link.active .mud-nav-link-icon svg,
+    .mud-nav-link.active .mud-nav-link-icon svg path
+
+</style>
+
+@code {
+    bool _open = true;
+    private bool _dense = false;
+    private DrawerClipMode _clipMode = DrawerClipMode.Never;
+
+    private List<BreadcrumbItem> _items = new();
+
+    void ToggleDrawer()
+    {
+        _open = !_open;
+    }
+
+    protected override void OnInitialized()
+    {
+        BuildBreadcrumbs(Navigation.Uri);
+        Navigation.LocationChanged += (_, args) =>
+        {
+            BuildBreadcrumbs(args.Location);
+            StateHasChanged();
+        };
+    }
+
+    private void BuildBreadcrumbs(string uri)
+    {
+        var baseUri = Navigation.BaseUri;
+        var relative = uri.Replace(baseUri, "");
+        var segments = relative.Split('/', StringSplitOptions.RemoveEmptyEntries);
+
+        _items = new List<BreadcrumbItem>()
+        {
+            new BreadcrumbItem("Home", href: "/")
+        };
+
+        string currentPath = "";
+        foreach (var segment in segments)
+        {
+            currentPath += "/" + segment;
+
+            _items.Add(new BreadcrumbItem(
+                text: ToTitleCase(segment),
+                href: currentPath,
+                disabled: segment == segments.Last()
+            ));
+        }
+    }
+
+    private string ToTitleCase(string s)
+    {
+        s = s.Replace("-", " ").Replace("_", " ");
+        return System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(s);
+    }
+}

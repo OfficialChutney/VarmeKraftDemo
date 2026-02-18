@@ -1,0 +1,16 @@
+﻿@inherits LayoutComponentBase
+
+<MudThemeProvider Theme = "@DefaultTheme.CostumTheme"/>
+<MudDialogProvider />
+<MudPopoverProvider />
+<MudSnackbarProvider />
+
+<MudLayout Style="height:100vh; overflow:hidden;">
+    <MudDrawerContainer Style="height:100%;">
+        <NavMenu />
+
+        <MudMainContent Style="height:100%; overflow:auto;">
+            @Body
+        </MudMainContent>
+    </MudDrawerContainer>
+</MudLayout>

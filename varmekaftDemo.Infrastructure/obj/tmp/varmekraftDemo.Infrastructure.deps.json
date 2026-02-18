@@ -1,0 +1,56 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "varmekraftDemo.Infrastructure/1.0.0": {
+        "dependencies": {
+          "varmekraftDemo.Application": "1.0.0",
+          "varmekraftDemo.Domain": "1.0.0"
+        },
+        "runtime": {
+          "varmekraftDemo.Infrastructure.dll": {}
+        }
+      },
+      "varmekraftDemo.Application/1.0.0": {
+        "dependencies": {
+          "varmekraftDemo.Domain": "1.0.0"
+        },
+        "runtime": {
+          "varmekraftDemo.Application.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "varmekraftDemo.Domain/1.0.0": {
+        "runtime": {
+          "varmekraftDemo.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "varmekraftDemo.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "varmekraftDemo.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "varmekraftDemo.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

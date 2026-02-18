@@ -1,0 +1,15 @@
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Application\obj\tmp\varmekraftDemo.Application.deps.json
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Application\obj\tmp\varmekraftDemo.Application.dll
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Application\obj\tmp\varmekraftDemo.Application.pdb
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Application\obj\tmp\varmekraftDemo.Domain.dll
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Application\obj\tmp\varmekraftDemo.Domain.pdb
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Application\obj\Debug\varmekraftDemo.Application.csproj.AssemblyReference.cache
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Application\obj\Debug\varmekraftDemo.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Application\obj\Debug\varmekraftDemo.Application.AssemblyInfoInputs.cache
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Application\obj\Debug\varmekraftDemo.Application.AssemblyInfo.cs
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Application\obj\Debug\varmekraftDemo.Application.csproj.CoreCompileInputs.cache
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Application\obj\Debug\varmekra.8DBD98E3.Up2Date
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Application\obj\Debug\varmekraftDemo.Application.dll
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Application\obj\Debug\refint\varmekraftDemo.Application.dll
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Application\obj\Debug\varmekraftDemo.Application.pdb
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Application\obj\Debug\ref\varmekraftDemo.Application.dll

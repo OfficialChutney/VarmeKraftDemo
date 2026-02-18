@@ -1,0 +1,17 @@
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekaftDemo.Infrastructure\obj\tmp\varmekraftDemo.Infrastructure.deps.json
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekaftDemo.Infrastructure\obj\tmp\varmekraftDemo.Infrastructure.dll
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekaftDemo.Infrastructure\obj\tmp\varmekraftDemo.Infrastructure.pdb
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekaftDemo.Infrastructure\obj\tmp\varmekraftDemo.Application.dll
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekaftDemo.Infrastructure\obj\tmp\varmekraftDemo.Domain.dll
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekaftDemo.Infrastructure\obj\tmp\varmekraftDemo.Application.pdb
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekaftDemo.Infrastructure\obj\tmp\varmekraftDemo.Domain.pdb
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekaftDemo.Infrastructure\obj\Debug\varmekraftDemo.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekaftDemo.Infrastructure\obj\Debug\varmekraftDemo.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekaftDemo.Infrastructure\obj\Debug\varmekraftDemo.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekaftDemo.Infrastructure\obj\Debug\varmekraftDemo.Infrastructure.AssemblyInfo.cs
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekaftDemo.Infrastructure\obj\Debug\varmekraftDemo.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekaftDemo.Infrastructure\obj\Debug\varmekra.96F54625.Up2Date
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekaftDemo.Infrastructure\obj\Debug\varmekraftDemo.Infrastructure.dll
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekaftDemo.Infrastructure\obj\Debug\refint\varmekraftDemo.Infrastructure.dll
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekaftDemo.Infrastructure\obj\Debug\varmekraftDemo.Infrastructure.pdb
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekaftDemo.Infrastructure\obj\Debug\ref\varmekraftDemo.Infrastructure.dll

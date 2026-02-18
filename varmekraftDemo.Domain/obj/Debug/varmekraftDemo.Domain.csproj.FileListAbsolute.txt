@@ -1,0 +1,11 @@
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Domain\obj\tmp\varmekraftDemo.Domain.deps.json
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Domain\obj\tmp\varmekraftDemo.Domain.dll
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Domain\obj\tmp\varmekraftDemo.Domain.pdb
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Domain\obj\Debug\varmekraftDemo.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Domain\obj\Debug\varmekraftDemo.Domain.AssemblyInfoInputs.cache
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Domain\obj\Debug\varmekraftDemo.Domain.AssemblyInfo.cs
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Domain\obj\Debug\varmekraftDemo.Domain.csproj.CoreCompileInputs.cache
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Domain\obj\Debug\varmekraftDemo.Domain.dll
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Domain\obj\Debug\refint\varmekraftDemo.Domain.dll
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Domain\obj\Debug\varmekraftDemo.Domain.pdb
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Domain\obj\Debug\ref\varmekraftDemo.Domain.dll

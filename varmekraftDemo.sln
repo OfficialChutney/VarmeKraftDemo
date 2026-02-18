@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36811.4
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{97E06709-164E-40A8-857B-8EC150571CE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "varmekraftDemo.Domain", "varmekraftDemo.Domain\varmekraftDemo.Domain.csproj", "{2BC16170-AF04-48DF-B506-0A42BF62C532}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "varmekraftDemo.Application", "varmekraftDemo.Application\varmekraftDemo.Application.csproj", "{0D76CE2A-3D5B-4721-9076-56F014F1609A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "varmekraftDemo.Infrastructure", "varmekaftDemo.Infrastructure\varmekraftDemo.Infrastructure.csproj", "{D742D84E-C33D-4D6B-A6DE-BE3D3E864317}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "varmekraftDemo.Web", "varmekraftDemo.Web\varmekraftDemo.Web.csproj", "{70E9F7A1-BA12-4211-B0A4-12117976A36A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2BC16170-AF04-48DF-B506-0A42BF62C532}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BC16170-AF04-48DF-B506-0A42BF62C532}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BC16170-AF04-48DF-B506-0A42BF62C532}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BC16170-AF04-48DF-B506-0A42BF62C532}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D76CE2A-3D5B-4721-9076-56F014F1609A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D76CE2A-3D5B-4721-9076-56F014F1609A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D76CE2A-3D5B-4721-9076-56F014F1609A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D76CE2A-3D5B-4721-9076-56F014F1609A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D742D84E-C33D-4D6B-A6DE-BE3D3E864317}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D742D84E-C33D-4D6B-A6DE-BE3D3E864317}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D742D84E-C33D-4D6B-A6DE-BE3D3E864317}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D742D84E-C33D-4D6B-A6DE-BE3D3E864317}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70E9F7A1-BA12-4211-B0A4-12117976A36A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70E9F7A1-BA12-4211-B0A4-12117976A36A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70E9F7A1-BA12-4211-B0A4-12117976A36A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70E9F7A1-BA12-4211-B0A4-12117976A36A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2BC16170-AF04-48DF-B506-0A42BF62C532} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{0D76CE2A-3D5B-4721-9076-56F014F1609A} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{D742D84E-C33D-4D6B-A6DE-BE3D3E864317} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{70E9F7A1-BA12-4211-B0A4-12117976A36A} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0FB82984-2C11-418E-AC26-69C74EFF9797}
+	EndGlobalSection
+EndGlobal
