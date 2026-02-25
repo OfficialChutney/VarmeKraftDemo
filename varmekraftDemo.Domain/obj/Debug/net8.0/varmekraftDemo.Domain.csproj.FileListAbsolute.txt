@@ -9,3 +9,4 @@ C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDe
 C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Domain\obj\Debug\net8.0\refint\varmekraftDemo.Domain.dll
 C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Domain\obj\Debug\net8.0\varmekraftDemo.Domain.pdb
 C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Domain\obj\Debug\net8.0\ref\varmekraftDemo.Domain.dll
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Domain\obj\Debug\net8.0\varmekraftDemo.Domain.sourcelink.json

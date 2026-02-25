@@ -15,3 +15,4 @@ C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekaftDem
 C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekaftDemo.Infrastructure\obj\Debug\net8.0\refint\varmekraftDemo.Infrastructure.dll
 C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekaftDemo.Infrastructure\obj\Debug\net8.0\varmekraftDemo.Infrastructure.pdb
 C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekaftDemo.Infrastructure\obj\Debug\net8.0\ref\varmekraftDemo.Infrastructure.dll
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekaftDemo.Infrastructure\obj\Debug\net8.0\varmekraftDemo.Infrastructure.sourcelink.json

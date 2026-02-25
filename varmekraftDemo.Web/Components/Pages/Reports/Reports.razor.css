@@ -1,0 +1,16 @@
+.hp-card {
+    border-radius: 16px;
+}
+
+.hp-chips-wrap {
+    flex-wrap: wrap;
+}
+
+.hp-send {
+    min-height: 56px;
+}
+
+.hp-preview {
+    padding: 16px;
+}
+

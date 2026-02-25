@@ -1,0 +1,234 @@
+@typeparam TItem where TItem : class
+
+@if (XDateSelector is null)
+{
+    <div class="alert alert-danger" role="alert">
+        XDateSelector is required.
+    </div>
+}
+else if (Series.Count == 0)
+{
+    <div class="alert alert-warning" role="alert">
+        No series configured.
+    </div>
+}
+else
+{
+    <ApexChart TItem="TItem" Options="@options" @key="renderKey">
+        @foreach (var entry in seriesWithItems)
+        {
+            var isFuture =
+            entry.Series.Name == "Volue" ||
+            entry.Series.Name == "Centrica";
+
+            <ApexPointSeries TItem="TItem"
+                             Items="entry.Items"
+                             Name="@entry.Series.Name"
+                             SeriesType="SeriesType.Line"
+                             XValue="item => ToUnixTimeMilliseconds(XDateSelector(item))"
+                             YValue="item => entry.Series.YSelector(item)" />
+        }
+    </ApexChart>
+}
+
+@code {
+    [Parameter] public IReadOnlyList<TItem> Items { get; set; } = Array.Empty<TItem>();
+    [Parameter] public Func<TItem, DateTime>? XDateSelector { get; set; }
+    [Parameter] public IReadOnlyList<TimeSeriesLineSeries<TItem>> Series { get; set; } = Array.Empty<TimeSeriesLineSeries<TItem>>();
+
+    [Parameter] public int Height { get; set; } = 420;
+    [Parameter] public string XAxisTitle { get; set; } = "Tid";
+    [Parameter] public string YAxisTitle { get; set; } = "Pris";
+    [Parameter] public string DateTimeLabelFormat { get; set; } = "HH:mm";
+
+    [Parameter] public DateTime? Now { get; set; }
+    [Parameter] public bool ShowNowMarker { get; set; } = true;
+    [Parameter] public string NowLabel { get; set; } = "I dag";
+
+    [Parameter] public bool DashedAfterNow { get; set; } = true;
+    [Parameter] public int ForecastDashArray { get; set; } = 6;
+
+    [Parameter] public double? YMin { get; set; }
+    [Parameter] public double? YMax { get; set; }
+
+    private ApexChartOptions<TItem> options = new();
+    private string renderKey = Guid.NewGuid().ToString("N");
+    private IReadOnlyList<TItem> orderedItems = Array.Empty<TItem>();
+    private IReadOnlyList<(TimeSeriesLineSeries<TItem> Series, IReadOnlyList<TItem> Items)> seriesWithItems =
+        Array.Empty<(TimeSeriesLineSeries<TItem>, IReadOnlyList<TItem>)>();
+
+    protected override void OnParametersSet()
+    {
+        if (XDateSelector is null)
+        {
+            orderedItems = Array.Empty<TItem>();
+            seriesWithItems = Array.Empty<(TimeSeriesLineSeries<TItem>, IReadOnlyList<TItem>)>();
+            options = new();
+            return;
+        }
+
+        orderedItems = Items.Count == 0 ? Items : Items.OrderBy(XDateSelector).ToArray();
+        seriesWithItems = BuildSeriesWithItems();
+        options = BuildOptions();
+
+        renderKey =
+            $"{Items.Count}-{Series.Count}-{Height}-{YAxisTitle}-{XAxisTitle}-{DateTimeLabelFormat}-{ShowNowMarker}-{DashedAfterNow}-{ForecastDashArray}-{(Now?.Ticks ?? 0)}";
+    }
+
+    private ApexChartOptions<TItem> BuildOptions()
+    {
+        var now = Now ?? DateTime.Now;
+        now = new DateTime(now.Year, now.Month, now.Day, now.Hour, 0, 0, now.Kind);
+        var futureCount = DashedAfterNow ? GetFutureCount(now) : 0;
+
+        return new ApexChartOptions<TItem>
+        {
+            Chart = new Chart
+            {
+                Type = ApexCharts.ChartType.Line,
+                Height = Height,
+                Toolbar = new Toolbar { Show = false }
+            },
+            Stroke = new Stroke
+            {
+                Curve = Curve.Straight,
+                Width = new List<double> { 2, 2, 2, 2, 2 },
+                DashArray = new List<double>
+            {
+                0,                  // Spot
+                0,                  // Volue past
+                ForecastDashArray,  // Volue future
+                0,                  // Centrica past
+                ForecastDashArray   // Centrica future
+            }
+            },
+            Markers = new Markers
+            {
+                Size = 0
+            },
+            Colors = new List<string>
+            {
+                "rgba(71,85,105,1)",        // Spot
+
+                "rgba(245,158,11,0.30)",    // Volue BEFORE now (dull orange)
+                "rgba(245,158,11,0.90)",    // Volue AFTER now
+
+                "rgba(21,128,61,0.30)",     // Centrica BEFORE now (dull dark green)
+                "rgba(21,128,61,0.90)"      // Centrica AFTER now
+            },
+            DataLabels = new DataLabels
+            {
+                Enabled = false
+            },
+            Legend = new Legend
+            {
+                Formatter = @"function(seriesName, opts) {
+                    return seriesName.replace(' (past)','');
+                }"
+            },
+            Grid = new Grid
+            {
+                StrokeDashArray = 3
+            },
+            Xaxis = new XAxis
+            {
+                Type = XAxisType.Datetime,
+                Title = new AxisTitle { Text = XAxisTitle },
+                Labels = new XAxisLabels
+                {
+                    DatetimeUTC = false,
+                    Format = DateTimeLabelFormat,
+                    HideOverlappingLabels = true,
+                    ShowDuplicates = false
+                }
+            },
+            Yaxis = new List<YAxis>
+            {
+                new()
+                {
+                    Title = new AxisTitle { Text = YAxisTitle },
+                    Min = YMin,
+                    Max = YMax
+                }
+            },
+            Annotations = ShowNowMarker ? BuildNowAnnotation(now) : null,
+        };
+    }
+
+    private int GetFutureCount(DateTime now)
+    {
+        if (orderedItems.Count == 0 || XDateSelector is null)
+        {
+            return 0;
+        }
+
+        var firstFutureIndex = -1;
+        for (var i = 0; i < orderedItems.Count; i++)
+        {
+            if (XDateSelector(orderedItems[i]) > now)
+            {
+                firstFutureIndex = i;
+                break;
+            }
+        }
+
+        return firstFutureIndex < 0 ? 0 : orderedItems.Count - firstFutureIndex;
+    }
+
+    private IReadOnlyList<(TimeSeriesLineSeries<TItem> Series, IReadOnlyList<TItem> Items)> BuildSeriesWithItems()
+    {
+        if (orderedItems.Count == 0 || Series.Count == 0)
+        {
+            return Array.Empty<(TimeSeriesLineSeries<TItem>, IReadOnlyList<TItem>)>();
+        }
+
+        var list = new List<(TimeSeriesLineSeries<TItem> Series, IReadOnlyList<TItem> Items)>(Series.Count);
+        foreach (var series in Series)
+        {
+            if (series.ItemFilter is null)
+            {
+                list.Add((series, orderedItems));
+                continue;
+            }
+
+            var filtered = orderedItems.Where(series.ItemFilter).ToArray();
+            list.Add((series, filtered));
+        }
+
+        return list;
+    }
+
+    private static long ToUnixTimeMilliseconds(DateTime value)
+    {
+        return new DateTimeOffset(value).ToUnixTimeMilliseconds();
+    }
+
+    private Annotations BuildNowAnnotation(DateTime now)
+    {
+        return new Annotations
+        {
+            Xaxis = new List<AnnotationsXAxis>
+            {
+                new()
+                {
+                    X = ToUnixTimeMilliseconds(now),
+                    BorderColor = "#111827",
+                    BorderWidth = 2,
+                    StrokeDashArray = 0,
+                    Label = new Label
+                    {
+                        Text = NowLabel,
+                        BorderColor = "#111827",
+                        Style = new Style
+                        {
+                            Background = "#111827",
+                            Color = "#ffffff",
+                            FontSize = "12px",
+                            CssClass = "apexcharts-now-label"
+                        }
+                    }
+                }
+            }
+        };
+    }
+}

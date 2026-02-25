@@ -13,3 +13,4 @@ C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDe
 C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Application\obj\Debug\net8.0\refint\varmekraftDemo.Application.dll
 C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Application\obj\Debug\net8.0\varmekraftDemo.Application.pdb
 C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Application\obj\Debug\net8.0\ref\varmekraftDemo.Application.dll
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Application\obj\Debug\net8.0\varmekraftDemo.Application.sourcelink.json

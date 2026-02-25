@@ -55,3 +55,5 @@ C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDe
 C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Web\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
 C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Web\bin\Debug\net8.0\Microsoft.Extensions.Http.dll
 C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Web\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Web\obj\Debug\net8.0\varmekraftDemo.Web.sourcelink.json
+C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Web\obj\Debug\net8.0\scopedcss\Components\Pages\Reports\Reports.razor.rz.scp.css

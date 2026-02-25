@@ -1,5 +1,296 @@
-﻿<h3>Reports</h3>
+@using MudColor = MudBlazor.Color
+@using MudSize = MudBlazor.Size
+@using ApexColor = ApexCharts.Color
+@page "/reports"
+
+<PageTitle>Reports</PageTitle>
+
+<MudContainer Class="hp-page" MaxWidth="MaxWidth.False">
+    <MudStack Spacing="3">
+
+        <!-- Title row -->
+        <MudStack Row="true" AlignItems="AlignItems.Center" Justify="Justify.SpaceBetween" Class="mt-4">
+            <MudStack Spacing="0">
+                <MudText Typo="Typo.h5" Class="hp-title">Rapporter</MudText>
+            </MudStack>
+        </MudStack>
+
+        <!-- Top section: AI + Templates -->
+        <MudGrid Spacing="2">
+            <MudItem xs="12" md="12">
+                <MudPaper Class="hp-card hp-ai pa-4" Elevation="0" Outlined="true">
+                    <MudStack Spacing="2">
+                        <MudStack Row="true" AlignItems="AlignItems.Center" Spacing="1">
+                            <MudAvatar Class="logo-avatar"
+                                       Size="MudBlazor.Size.Large"
+                                       Style="width: 48px; height: 48px;">
+                                <img src="https://png.pngtree.com/png-clipart/20220911/original/pngtree-shining-bright-light-bulb-png-image_8539561.png"
+                                     style="width: 100%; height: 100%; object-fit: contain;" />
+                            </MudAvatar>                            <MudStack Spacing="0">
+                                <MudText Typo="Typo.subtitle1" Class="hp-card-title">Skriv en forespørgsel til AI'en for at få en rapport</MudText>
+                                <MudText Typo="Typo.subtitle2" Class="hp-card-title">Baseret på ennergi pris data</MudText>
+                            </MudStack>
+                        </MudStack>
+
+
+                        <!-- Quick chips -->
+                        <MudStack Row="true" Spacing="1" AlignItems="AlignItems.Center" Class="hp-chips-wrap">
+                            <MudChip T="string" Variant="Variant.Outlined" Color="MudColor.Primary" OnClick="@(() => SetPrompt(QuickPrompt.SpotVsForecast))">
+                                Spot vs prognose
+                            </MudChip>
+                            <MudChip T="string" Variant="Variant.Outlined" Color="MudColor.Primary" OnClick="@(() => SetPrompt(QuickPrompt.TopSpikes))">
+                                Top 10 udsving
+                            </MudChip>
+                            <MudChip T="string" Variant="Variant.Outlined" Color="MudColor.Primary" OnClick="@(() => SetPrompt(QuickPrompt.DailySummary))">
+                                Daglig opsummering
+                            </MudChip>
+                            <MudChip T="string" Variant="Variant.Outlined" Color="MudColor.Primary" OnClick="@(() => SetPrompt(QuickPrompt.ImbalanceExplainer))">
+                                Imbalance forklaring
+                            </MudChip>
+                    </MudStack>
+
+                    <!-- Prompt + Send -->
+                        <!-- Prompt + Send -->
+                        <MudGrid Spacing="2" Class="mt-1 hp-prompt-row">
+                            <MudItem xs="12" sm="10" md="10" lg="11" Class="hp-field-col">
+                                <MudTextField @bind-Value="aiPrompt"
+                                              Variant="Variant.Outlined"
+                                              Margin="Margin.Dense"
+                                              FullWidth="true"
+                                              Label="Skriv din forespørgsel"
+                                              Adornment="Adornment.Start"
+                                              AdornmentIcon="@Icons.Material.Filled.AutoAwesome"
+                                              Placeholder="Skriv her hvad du vil have din rapport til at indeholde..." />
+                            </MudItem>
+
+                            <MudItem xs="12" sm="2" md="2" lg="1" Class="hp-send-col">
+                                <MudButton Class="hp-send"
+                                           Variant="Variant.Filled"
+                                           Color="MudColor.Primary"
+                                           StartIcon="@Icons.Material.Filled.Send"
+                                           Disabled="@string.IsNullOrWhiteSpace(aiPrompt)"
+                                           OnClick="GenerateAiPreview"
+                                           FullWidth="true">
+                                    Send
+                                </MudButton>
+                            </MudItem>
+                        </MudGrid>
+
+                    </MudStack>
+                </MudPaper>
+            </MudItem>
+
+        </MudGrid>
+
+        <!-- Generated reports -->
+            <MudStack Spacing="2">
+                <MudStack Row="true" AlignItems="AlignItems.Center" Justify="Justify.SpaceBetween">
+                    <MudText Typo="Typo.subtitle1" Class="hp-card-title">Genererede rapporter</MudText>
+                </MudStack>
+            </MudStack>
+
+		<MudPaper Class="hp-card hp-reports pa-4" Elevation="0" Outlined="true">
+                <MudTabs Rounded="true" Elevation="0" @bind-ActivePanelIndex="activeTab">
+                    <MudTabPanel Text="Alle" />
+                    <MudTabPanel Text="Dagligt" />
+                    <MudTabPanel Text="Månedligt" />
+                    <MudTabPanel Text="Prognoser" />
+                    <MudTabPanel Text="Produktion" />
+                </MudTabs>
+
+                <MudDataGrid T="ReportRow"
+                             Items="@FilteredReports"
+                             Dense="true"
+                             Hover="true"
+                             Bordered="true"
+                             Striped="true"
+                             Elevation="0"
+                             Outlined="true">
+                    <Columns>
+                        <PropertyColumn Property="x => x.Title" Title="Rapport" />
+                        <PropertyColumn Property="x => x.Period" Title="Periode" />
+                        <PropertyColumn Property="x => x.Format" Title="Format" />
+                        <PropertyColumn Property="x => x.GeneratedAt" Title="Genereret">
+                            <CellTemplate>
+                                @context.Item.GeneratedAt.ToString("dd-MM-yyyy HH:mm")
+                            </CellTemplate>
+                        </PropertyColumn>
+                        <PropertyColumn Property="x => x.SizeText" Title="St&oslash;rrelse" />
+
+                        <TemplateColumn Title="Handlinger">
+                            <CellTemplate>
+                                <MudStack Row="true" Spacing="1" AlignItems="AlignItems.Center">
+                                    <MudButton Variant="Variant.Filled"
+                                               Color="MudColor.Primary"
+                                               Size="MudSize.Small"
+                                               StartIcon="@Icons.Material.Filled.Download"
+                                               Href="@($"/reports/download/{context.Item.Id}")"
+                                               Target="_blank">
+                                        Download
+                                    </MudButton>
+
+                                    <MudIconButton Icon="@Icons.Material.Filled.Visibility"
+                                                   Color="MudColor.Secondary"
+                                                   Size="MudSize.Small"
+                                                   Disabled="true"
+                                                   Title="Preview (demo)" />
+
+                                    <MudIconButton Icon="@Icons.Material.Filled.MoreVert"
+                                                   Color="MudColor.Secondary"
+                                                   Size="MudSize.Small"
+                                                   Disabled="true"
+                                                   Title="Flere handlinger (demo)" />
+                                </MudStack>
+                            </CellTemplate>
+                        </TemplateColumn>
+                    </Columns>
+
+                    <PagerContent>
+                        <MudDataGridPager T="ReportRow" />
+                    </PagerContent>
+                </MudDataGrid>
+		</MudPaper>
+    </MudStack>
+</MudContainer>
+
+<style>
+    /* Make grid row align its items to the bottom */
+    .hp-prompt-row {
+        align-items: flex-end; /* applies to the row */
+        min-height: 60px; /* Ensure enough height for tall text field */
+    }
+
+    /* Make the send column participate in row height, then bottom-align content */
+    .hp-send-col {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: 100%;
+    }
+
+    /* Adjust button size and position */
+    .hp-send {
+        height: 36px; /* Smaller button height */
+        margin-bottom: 4px; /* Small adjustment to align with text field bottom */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 12px; /* Slightly smaller horizontal padding */
+    }
+
+    /* Ensure the text field has proper height with 3 lines */
+    .hp-field-col .mud-input-control {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    /* Optional: Adjust the text field's internal padding for better proportions */
+    .hp-field-col .mud-input-outlined .mud-input-outlined-input {
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+</style>
 
 @code {
+    private string aiPrompt = "";
+    private string? aiPreview;
 
+    private string search = "";
+    private int activeTab = 0;
+
+    private PriceArea selectedArea = PriceArea.DK1;
+    private ReportFormat selectedFormat = ReportFormat.CSV;
+    private TimePreset selectedPreset = TimePreset.Today;
+
+    private IReadOnlyList<ReportRow> reports =
+    [
+        new("spot-dk1-daily", "Spotpriser DK1 (Daglig)", "I dag", "CSV", DateTime.Now.AddMinutes(-12), "38 KB", ReportCategory.Daily),
+        new("spot-dk1-monthly", "Spotpriser DK1 (Måned)", "Seneste 30 dage", "CSV", DateTime.Now.AddDays(-1).AddHours(-2), "410 KB", ReportCategory.Monthly),
+        new("forecast-comparison", "Prognose sammenligning", "I går → +48 timer", "CSV", DateTime.Now.AddDays(-2), "92 KB", ReportCategory.Forecast),
+        new("production-summary", "Produktions-opsummering", "Uge 8", "CSV", DateTime.Now.AddDays(-6), "55 KB", ReportCategory.Production),
+    ];
+
+    private IEnumerable<ReportRow> FilteredReports
+    {
+        get
+        {
+            IEnumerable<ReportRow> q = reports;
+
+            var cat = TabToCategory(activeTab);
+            if (cat is not null)
+                q = q.Where(r => r.Category == cat.Value);
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                var s = search.Trim();
+                q = q.Where(r =>
+                    r.Title.Contains(s, StringComparison.OrdinalIgnoreCase) ||
+                    r.Period.Contains(s, StringComparison.OrdinalIgnoreCase) ||
+                    r.Format.Contains(s, StringComparison.OrdinalIgnoreCase));
+            }
+
+            return q.OrderByDescending(r => r.GeneratedAt);
+        }
+    }
+
+    private void GenerateAiPreview()
+    {
+        var prompt = aiPrompt.Trim();
+        aiPreview =
+            $"“{prompt}”\n\n" +
+            $"• Datasæt: Spotpriser + prognoser + imbalance (hvis relevant)\n" +
+            $"• Filtre: Område={selectedArea}, Periode={PresetLabel(selectedPreset)}\n" +
+            $"• Output: {selectedFormat} med tabel + korte highlights + top-n udsving";
+    }
+
+    private void SetPrompt(QuickPrompt qp)
+    {
+        aiPrompt = qp switch
+        {
+            QuickPrompt.SpotVsForecast =>
+                "Lav en rapport over spotpriser vs prognoser for perioden, og fremhæv største afvigelser.",
+            QuickPrompt.TopSpikes =>
+                "Find top 10 prisudsving i perioden og forklar mulige årsager.",
+            QuickPrompt.DailySummary =>
+                "Lav en kort daglig opsummering med min/max, gennemsnit og peak-timer.",
+            QuickPrompt.ImbalanceExplainer =>
+                "Lav en rapport der forklarer imbalance-priser og sammenligner mod spotpris.",
+            _ => aiPrompt
+        };
+    }
+
+    private static string PresetLabel(TimePreset p) => p switch
+    {
+        TimePreset.Today => "I dag",
+        TimePreset.Last7Days => "Seneste 7 dage",
+        TimePreset.Last30Days => "Seneste 30 dage",
+        TimePreset.YesterdayPlus48h => "I går → +48 timer",
+        TimePreset.Week8 => "Uge 8",
+        _ => "—"
+    };
+
+    private static ReportCategory? TabToCategory(int tabIndex) => tabIndex switch
+    {
+        0 => null,
+        1 => ReportCategory.Daily,
+        2 => ReportCategory.Monthly,
+        3 => ReportCategory.Forecast,
+        4 => ReportCategory.Production,
+        _ => null
+    };
+
+    private enum ReportCategory { Daily, Monthly, Forecast, Production }
+    private enum PriceArea { DK1, DK2, System }
+    private enum ReportFormat { CSV, XLSX, PDF }
+    private enum TimePreset { Today, Last7Days, Last30Days, YesterdayPlus48h, Week8 }
+    private enum QuickPrompt { SpotVsForecast, TopSpikes, DailySummary, ImbalanceExplainer }
+
+    private sealed record ReportRow(
+        string Id,
+        string Title,
+        string Period,
+        string Format,
+        DateTime GeneratedAt,
+        string SizeText,
+        ReportCategory Category);
 }

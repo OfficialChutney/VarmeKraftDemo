@@ -1,0 +1,23 @@
+# Visual Studio
+.vs/
+
+# Build results
+bin/
+obj/
+
+# User files
+*.user
+*.suo
+
+# Executables
+*.exe
+*.dll
+*.pdb
+
+# Rider / VSCode
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

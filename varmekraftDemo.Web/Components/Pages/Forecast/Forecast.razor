@@ -1,5 +1,95 @@
-﻿<h3>Forecast</h3>
+@page "/forecast"
+
+<PageTitle>Forecast</PageTitle>
+
+<MudContainer Class="mt-8 px-6" MaxWidth="MaxWidth.False">
+    <MudPaper Class="mud-width-full pa-4" Elevation="0" Outlined="true">
+        <MudText Typo="Typo.h6" Class="mb-2">Energi prognoser</MudText>
+
+        <TimeSeriesLineChart TItem="ForecastPoint"
+                             Items="points"
+                             XDateSelector="x => x.Time"
+                             Series="series"
+                             Height="420"
+                             XAxisTitle="Tid"
+                             YAxisTitle="Pris (EUR/MWh)"
+                             DateTimeLabelFormat="dd-MM HH:mm"
+                             Now="@now"
+                             NowLabel="I dag"
+                             DashedAfterNow="true"
+                             ForecastDashArray="6" />
+    </MudPaper>
+</MudContainer>
 
 @code {
+    private DateTime now;
+    private IReadOnlyList<ForecastPoint> points = Array.Empty<ForecastPoint>();
 
+    private IReadOnlyList<TimeSeriesLineSeries<ForecastPoint>> series = Array.Empty<TimeSeriesLineSeries<ForecastPoint>>();
+
+    protected override void OnInitialized()
+    {
+        now = DateTime.Now;
+        points = BuildFakeData(now, hoursBack: 24, hoursForward: 48);
+
+        series =
+        [
+            new("Spot", x => x.SpotPriceEur, ItemFilter: x => x.Time <= now),
+
+            new("Volue (past)",    x => x.VoleuForecastEur,    ItemFilter: x => x.Time <= now),
+            new("Volue",           x => x.VoleuForecastEur,    ItemFilter: x => x.Time >  now),
+
+            new("Centrica (past)", x => x.CentricaForecastEur, ItemFilter: x => x.Time <= now),
+            new("Centrica",        x => x.CentricaForecastEur, ItemFilter: x => x.Time >  now),
+        ];
+    }
+
+    private static IReadOnlyList<ForecastPoint> BuildFakeData(DateTime now, int hoursBack, int hoursForward)
+    {
+        var start = now.AddHours(-hoursBack);
+        var end = now.AddHours(hoursForward);
+
+        start = new DateTime(start.Year, start.Month, start.Day, start.Hour, 0, 0, start.Kind);
+        end = new DateTime(end.Year, end.Month, end.Day, end.Hour, 0, 0, end.Kind);
+
+        var random = new Random(42);
+        var list = new List<ForecastPoint>();
+
+        var t = start;
+        var i = 0;
+        while (t <= end)
+        {
+            var basePrice = 55
+                + 12 * Math.Sin(i / 6.0)
+                + 6 * Math.Cos(i / 11.0)
+                + (random.NextDouble() * 4 - 2);
+
+            var spot = (decimal)Math.Round(basePrice, 2);
+            var voleu = spot + (decimal)Math.Round(1.5 + 2.0 * Math.Sin(i / 9.0), 2);
+
+            var centricaBias = t > now ? 3.0 : 1.0;
+            var centrica = spot + (decimal)Math.Round(-centricaBias + 1.5 * Math.Cos(i / 7.0), 2);
+
+            list.Add(new ForecastPoint
+            {
+                Time = t,
+                SpotPriceEur = spot,
+                VoleuForecastEur = voleu,
+                CentricaForecastEur = centrica
+            });
+
+            t = t.AddHours(1);
+            i++;
+        }
+
+        return list;
+    }
+
+    private sealed class ForecastPoint
+    {
+        public DateTime Time { get; set; }
+        public decimal? SpotPriceEur { get; set; }
+        public decimal? VoleuForecastEur { get; set; }
+        public decimal? CentricaForecastEur { get; set; }
+    }
 }

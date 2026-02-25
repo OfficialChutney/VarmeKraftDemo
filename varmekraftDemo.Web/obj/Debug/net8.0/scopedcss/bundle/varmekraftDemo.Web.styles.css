@@ -202,3 +202,20 @@ main[b-k78cujyaci] {
         overflow-y: auto;
     }
 }
+/* _content/varmekraftDemo.Web/Components/Pages/Reports/Reports.razor.rz.scp.css */
+.hp-card[b-po5bvs333c] {
+    border-radius: 16px;
+}
+
+.hp-chips-wrap[b-po5bvs333c] {
+    flex-wrap: wrap;
+}
+
+.hp-send[b-po5bvs333c] {
+    min-height: 56px;
+}
+
+.hp-preview[b-po5bvs333c] {
+    padding: 16px;
+}
+

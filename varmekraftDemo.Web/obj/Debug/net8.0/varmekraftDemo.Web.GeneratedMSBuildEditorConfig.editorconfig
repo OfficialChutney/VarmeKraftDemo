@@ -31,6 +31,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDaGFydHNcQ2F0ZWdvcnlCYXJDaGFydC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/alfre/Documents/Git projects/varmekraftDemo/varmekraftDemo/varmekraftDemo.Web/Components/Charts/TimeSeriesLineChart.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDaGFydHNcVGltZVNlcmllc0xpbmVDaGFydC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/alfre/Documents/Git projects/varmekraftDemo/varmekraftDemo/varmekraftDemo.Web/Components/Pages/Error.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -49,10 +53,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/alfre/Documents/Git projects/varmekraftDemo/varmekraftDemo/varmekraftDemo.Web/Components/Pages/ProductionUnits/ProductionUnits.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQcm9kdWN0aW9uVW5pdHNcUHJvZHVjdGlvblVuaXRzLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/alfre/Documents/Git projects/varmekraftDemo/varmekraftDemo/varmekraftDemo.Web/Components/Pages/Reports/Reports.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZXBvcnRzXFJlcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/alfre/Documents/Git projects/varmekraftDemo/varmekraftDemo/varmekraftDemo.Web/Components/Pages/Settings/Settings.razor]
@@ -74,3 +74,7 @@ build_metadata.AdditionalFiles.CssScope = b-k78cujyaci
 [C:/Users/alfre/Documents/Git projects/varmekraftDemo/varmekraftDemo/varmekraftDemo.Web/Components/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-nbcm98rbsl
+
+[C:/Users/alfre/Documents/Git projects/varmekraftDemo/varmekraftDemo/varmekraftDemo.Web/Components/Pages/Reports/Reports.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZXBvcnRzXFJlcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-po5bvs333c
