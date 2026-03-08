@@ -36,17 +36,6 @@
                     <span class="forecast-legend-tooltip" role="tooltip">@VolueTooltip</span>
                 </a>
             </div>
-            <div class="forecast-legend-item">
-                <span class="forecast-legend-swatch centrica"></span>
-                <a class="forecast-legend-logo-trigger"
-                   href="https://www.centrica.com/who-we-are"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   aria-label="Read more about Centrica">
-                    <img class="forecast-legend-logo" src="/assets/centrica.svg" alt="Centrica" />
-                    <span class="forecast-legend-tooltip" role="tooltip">@CentricaTooltip</span>
-                </a>
-            </div>
         </div>
     </MudPaper>
 </MudContainer>
@@ -55,7 +44,6 @@
     private DateTime now;
     private IReadOnlyList<ForecastPoint> points = Array.Empty<ForecastPoint>();
     private const string VolueTooltip = "Volue is a technology supplier focused on the energy and power grid markets, offering software, market insights and services to support the green transition.";
-    private const string CentricaTooltip = "Centrica is an international energy and services company in the UK and Ireland, operating across the energy value chain to help deliver a greener, fairer energy system.";
 
     private IReadOnlyList<TimeSeriesLineSeries<ForecastPoint>> series = Array.Empty<TimeSeriesLineSeries<ForecastPoint>>();
 
@@ -70,9 +58,6 @@
 
             new("Volue (past)",    x => x.VoleuForecastEur,    ItemFilter: x => x.Time <= now),
             new("Volue",           x => x.VoleuForecastEur,    ItemFilter: x => x.Time >  now),
-
-            new("Centrica (past)", x => x.CentricaForecastEur, ItemFilter: x => x.Time <= now),
-            new("Centrica",        x => x.CentricaForecastEur, ItemFilter: x => x.Time >  now),
         ];
     }
 
@@ -99,15 +84,11 @@
             var spot = (decimal)Math.Round(basePrice, 2);
             var voleu = spot + (decimal)Math.Round(1.5 + 2.0 * Math.Sin(i / 9.0), 2);
 
-            var centricaBias = t > now ? 3.0 : 1.0;
-            var centrica = spot + (decimal)Math.Round(-centricaBias + 1.5 * Math.Cos(i / 7.0), 2);
-
             list.Add(new ForecastPoint
             {
                 Time = t,
                 SpotPriceEur = spot,
-                VoleuForecastEur = voleu,
-                CentricaForecastEur = centrica
+                VoleuForecastEur = voleu
             });
 
             t = t.AddHours(1);
@@ -122,6 +103,5 @@
         public DateTime Time { get; set; }
         public decimal? SpotPriceEur { get; set; }
         public decimal? VoleuForecastEur { get; set; }
-        public decimal? CentricaForecastEur { get; set; }
     }
 }

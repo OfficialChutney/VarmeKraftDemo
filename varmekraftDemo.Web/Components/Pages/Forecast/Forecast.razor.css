@@ -32,11 +32,6 @@
     border-top-style: dashed;
 }
 
-.forecast-legend-swatch.centrica {
-    border-color: rgba(21, 128, 61, 0.9);
-    border-top-style: dashed;
-}
-
 .forecast-legend-logo {
     display: block;
     height: 15px;

@@ -17,10 +17,6 @@ else
     <ApexChart TItem="TItem" Options="@options" @key="renderKey">
         @foreach (var entry in seriesWithItems)
         {
-            var isFuture =
-            entry.Series.Name == "Volue" ||
-            entry.Series.Name == "Centrica";
-
             <ApexPointSeries TItem="TItem"
                              Items="entry.Items"
                              Name="@entry.Series.Name"
@@ -80,7 +76,6 @@ else
     {
         var now = Now ?? DateTime.Now;
         now = new DateTime(now.Year, now.Month, now.Day, now.Hour, 0, 0, now.Kind);
-        var futureCount = DashedAfterNow ? GetFutureCount(now) : 0;
 
         return new ApexChartOptions<TItem>
         {
@@ -93,30 +88,14 @@ else
             Stroke = new Stroke
             {
                 Curve = Curve.Straight,
-                Width = new List<double> { 2, 2, 2, 2, 2 },
-                DashArray = new List<double>
-            {
-                0,                  // Spot
-                0,                  // Volue past
-                ForecastDashArray,  // Volue future
-                0,                  // Centrica past
-                ForecastDashArray   // Centrica future
-            }
+                Width = Enumerable.Repeat(2d, Series.Count).ToList(),
+                DashArray = Series.Select(GetDashArray).ToList()
             },
             Markers = new Markers
             {
                 Size = 0
             },
-            Colors = new List<string>
-            {
-                "rgba(71,85,105,1)",        // Spot
-
-                "rgba(245,158,11,0.30)",    // Volue BEFORE now (dull orange)
-                "rgba(245,158,11,0.90)",    // Volue AFTER now
-
-                "rgba(21,128,61,0.30)",     // Centrica BEFORE now (dull dark green)
-                "rgba(21,128,61,0.90)"      // Centrica AFTER now
-            },
+            Colors = Series.Select(GetSeriesColor).ToList(),
             DataLabels = new DataLabels
             {
                 Enabled = false
@@ -157,26 +136,6 @@ else
         };
     }
 
-    private int GetFutureCount(DateTime now)
-    {
-        if (orderedItems.Count == 0 || XDateSelector is null)
-        {
-            return 0;
-        }
-
-        var firstFutureIndex = -1;
-        for (var i = 0; i < orderedItems.Count; i++)
-        {
-            if (XDateSelector(orderedItems[i]) > now)
-            {
-                firstFutureIndex = i;
-                break;
-            }
-        }
-
-        return firstFutureIndex < 0 ? 0 : orderedItems.Count - firstFutureIndex;
-    }
-
     private IReadOnlyList<(TimeSeriesLineSeries<TItem> Series, IReadOnlyList<TItem> Items)> BuildSeriesWithItems()
     {
         if (orderedItems.Count == 0 || Series.Count == 0)
@@ -203,6 +162,33 @@ else
     private static long ToUnixTimeMilliseconds(DateTime value)
     {
         return new DateTimeOffset(value).ToUnixTimeMilliseconds();
+    }
+
+    private double GetDashArray(TimeSeriesLineSeries<TItem> series)
+    {
+        if (!DashedAfterNow)
+        {
+            return 0;
+        }
+
+        return series.Name.Contains("(past)", StringComparison.Ordinal) ? 0 : ForecastDashArray;
+    }
+
+    private static string GetSeriesColor(TimeSeriesLineSeries<TItem> series)
+    {
+        var isPast = series.Name.Contains("(past)", StringComparison.Ordinal);
+
+        if (series.Name.StartsWith("Spot", StringComparison.Ordinal))
+        {
+            return "rgba(71,85,105,1)";
+        }
+
+        if (series.Name.StartsWith("Volue", StringComparison.Ordinal))
+        {
+            return isPast ? "rgba(245,158,11,0.30)" : "rgba(245,158,11,0.90)";
+        }
+
+        return isPast ? "rgba(100,116,139,0.30)" : "rgba(100,116,139,0.90)";
     }
 
     private Annotations BuildNowAnnotation(DateTime now)

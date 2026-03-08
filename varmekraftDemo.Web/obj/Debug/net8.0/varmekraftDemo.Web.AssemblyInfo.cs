@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("varmekraftDemo.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5541bc79397c77def26e9a5cad257da171b7cc9b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+89102501195079e713badb21dc88ae9bc3482e56")]
 [assembly: System.Reflection.AssemblyProductAttribute("varmekraftDemo.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("varmekraftDemo.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
