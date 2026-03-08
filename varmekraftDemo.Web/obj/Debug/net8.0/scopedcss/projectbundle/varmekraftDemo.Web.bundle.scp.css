@@ -1,4 +1,4 @@
-/* _content/varmekraftDemo.Web/Components/Layout/MainLayout.razor.rz.scp.css */
+/* /Components/Layout/MainLayout.razor.rz.scp.css */
 .page[b-k78cujyaci] {
     position: relative;
     display: flex;
@@ -97,7 +97,7 @@ main[b-k78cujyaci] {
         right: 0.75rem;
         top: 0.5rem;
     }
-/* _content/varmekraftDemo.Web/Components/Layout/NavMenu.razor.rz.scp.css */
+/* /Components/Layout/NavMenu.razor.rz.scp.css */
 .navbar-toggler[b-nbcm98rbsl] {
     appearance: none;
     cursor: pointer;
@@ -202,7 +202,106 @@ main[b-k78cujyaci] {
         overflow-y: auto;
     }
 }
-/* _content/varmekraftDemo.Web/Components/Pages/Reports/Reports.razor.rz.scp.css */
+/* /Components/Pages/Forecast/Forecast.razor.rz.scp.css */
+.forecast-legend[b-4r8kiaquvs] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem 1.5rem;
+    margin-top: 0.75rem;
+}
+
+.forecast-legend-item[b-4r8kiaquvs] {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #334155;
+    font-size: 0.92rem;
+    font-weight: 600;
+}
+
+.forecast-legend-swatch[b-4r8kiaquvs] {
+    width: 24px;
+    height: 0;
+    border-top: 3px solid;
+    border-radius: 999px;
+}
+
+.forecast-legend-swatch.spot[b-4r8kiaquvs] {
+    border-color: rgba(71, 85, 105, 1);
+}
+
+.forecast-legend-swatch.volue[b-4r8kiaquvs] {
+    border-color: rgba(245, 158, 11, 0.9);
+    border-top-style: dashed;
+}
+
+.forecast-legend-swatch.centrica[b-4r8kiaquvs] {
+    border-color: rgba(21, 128, 61, 0.9);
+    border-top-style: dashed;
+}
+
+.forecast-legend-logo[b-4r8kiaquvs] {
+    display: block;
+    height: 15px;
+    width: auto;
+}
+
+.forecast-legend-logo-trigger[b-4r8kiaquvs] {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 30px;
+    padding: 0.35rem 0.55rem;
+    border: none;
+    border-radius: 8px;
+    background: #ffffff;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    transform: translateY(0) scale(1);
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+    transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+.forecast-legend-tooltip[b-4r8kiaquvs] {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 10px);
+    transform: translateX(-50%);
+    width: min(320px, calc(100vw - 2rem));
+    padding: 0.55rem 0.7rem;
+    border-radius: 8px;
+    background: #0f172a;
+    color: #f8fafc;
+    font-size: 0.78rem;
+    font-weight: 500;
+    line-height: 1.35;
+    text-align: left;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.28);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 120ms ease;
+    z-index: 20;
+}
+
+.forecast-legend-logo-trigger:hover .forecast-legend-tooltip[b-4r8kiaquvs],
+.forecast-legend-logo-trigger:focus .forecast-legend-tooltip[b-4r8kiaquvs],
+.forecast-legend-logo-trigger:focus-within .forecast-legend-tooltip[b-4r8kiaquvs] {
+    opacity: 1;
+    visibility: visible;
+}
+
+.forecast-legend-logo-trigger:hover[b-4r8kiaquvs],
+.forecast-legend-logo-trigger:focus[b-4r8kiaquvs],
+.forecast-legend-logo-trigger:focus-within[b-4r8kiaquvs] {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 10px 22px rgba(15, 23, 42, 0.24);
+}
+/* /Components/Pages/Reports/Reports.razor.rz.scp.css */
 .hp-card[b-po5bvs333c] {
     border-radius: 16px;
 }

@@ -47,6 +47,7 @@ else
 
     [Parameter] public bool DashedAfterNow { get; set; } = true;
     [Parameter] public int ForecastDashArray { get; set; } = 6;
+    [Parameter] public bool ShowLegend { get; set; } = true;
 
     [Parameter] public double? YMin { get; set; }
     [Parameter] public double? YMax { get; set; }
@@ -122,6 +123,7 @@ else
             },
             Legend = new Legend
             {
+                Show = ShowLegend,
                 Formatter = @"function(seriesName, opts) {
                     return seriesName.replace(' (past)','');
                 }"

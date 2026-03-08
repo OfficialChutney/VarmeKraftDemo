@@ -10,3 +10,15 @@ C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDe
 C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Domain\obj\Debug\net8.0\varmekraftDemo.Domain.pdb
 C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Domain\obj\Debug\net8.0\ref\varmekraftDemo.Domain.dll
 C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Domain\obj\Debug\net8.0\varmekraftDemo.Domain.sourcelink.json
+C:\Users\noah8\source\repos\varmekraftDemo\varmekraftDemo.Domain\bin\Debug\net8.0\varmekraftDemo.Domain.deps.json
+C:\Users\noah8\source\repos\varmekraftDemo\varmekraftDemo.Domain\bin\Debug\net8.0\varmekraftDemo.Domain.dll
+C:\Users\noah8\source\repos\varmekraftDemo\varmekraftDemo.Domain\bin\Debug\net8.0\varmekraftDemo.Domain.pdb
+C:\Users\noah8\source\repos\varmekraftDemo\varmekraftDemo.Domain\obj\Debug\net8.0\varmekraftDemo.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\noah8\source\repos\varmekraftDemo\varmekraftDemo.Domain\obj\Debug\net8.0\varmekraftDemo.Domain.AssemblyInfoInputs.cache
+C:\Users\noah8\source\repos\varmekraftDemo\varmekraftDemo.Domain\obj\Debug\net8.0\varmekraftDemo.Domain.AssemblyInfo.cs
+C:\Users\noah8\source\repos\varmekraftDemo\varmekraftDemo.Domain\obj\Debug\net8.0\varmekraftDemo.Domain.csproj.CoreCompileInputs.cache
+C:\Users\noah8\source\repos\varmekraftDemo\varmekraftDemo.Domain\obj\Debug\net8.0\varmekraftDemo.Domain.sourcelink.json
+C:\Users\noah8\source\repos\varmekraftDemo\varmekraftDemo.Domain\obj\Debug\net8.0\varmekraftDemo.Domain.dll
+C:\Users\noah8\source\repos\varmekraftDemo\varmekraftDemo.Domain\obj\Debug\net8.0\refint\varmekraftDemo.Domain.dll
+C:\Users\noah8\source\repos\varmekraftDemo\varmekraftDemo.Domain\obj\Debug\net8.0\varmekraftDemo.Domain.pdb
+C:\Users\noah8\source\repos\varmekraftDemo\varmekraftDemo.Domain\obj\Debug\net8.0\ref\varmekraftDemo.Domain.dll

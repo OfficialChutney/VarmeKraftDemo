@@ -17,13 +17,45 @@
                              Now="@now"
                              NowLabel="I dag"
                              DashedAfterNow="true"
-                             ForecastDashArray="6" />
+                             ForecastDashArray="6"
+                             ShowLegend="false" />
+
+        <div class="forecast-legend" aria-label="Chart legend">
+            <div class="forecast-legend-item">
+                <span class="forecast-legend-swatch spot"></span>
+                <span>Spot</span>
+            </div>
+            <div class="forecast-legend-item">
+                <span class="forecast-legend-swatch volue"></span>
+                <a class="forecast-legend-logo-trigger"
+                   href="https://www.volue.com/about-volue"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="Read more about Volue">
+                    <img class="forecast-legend-logo" src="/assets/volue.svg" alt="Volue" />
+                    <span class="forecast-legend-tooltip" role="tooltip">@VolueTooltip</span>
+                </a>
+            </div>
+            <div class="forecast-legend-item">
+                <span class="forecast-legend-swatch centrica"></span>
+                <a class="forecast-legend-logo-trigger"
+                   href="https://www.centrica.com/who-we-are"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="Read more about Centrica">
+                    <img class="forecast-legend-logo" src="/assets/centrica.svg" alt="Centrica" />
+                    <span class="forecast-legend-tooltip" role="tooltip">@CentricaTooltip</span>
+                </a>
+            </div>
+        </div>
     </MudPaper>
 </MudContainer>
 
 @code {
     private DateTime now;
     private IReadOnlyList<ForecastPoint> points = Array.Empty<ForecastPoint>();
+    private const string VolueTooltip = "Volue is a technology supplier focused on the energy and power grid markets, offering software, market insights and services to support the green transition.";
+    private const string CentricaTooltip = "Centrica is an international energy and services company in the UK and Ireland, operating across the energy value chain to help deliver a greener, fairer energy system.";
 
     private IReadOnlyList<TimeSeriesLineSeries<ForecastPoint>> series = Array.Empty<TimeSeriesLineSeries<ForecastPoint>>();
 

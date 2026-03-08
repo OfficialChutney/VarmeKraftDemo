@@ -14,3 +14,19 @@ C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDe
 C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Application\obj\Debug\net8.0\varmekraftDemo.Application.pdb
 C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Application\obj\Debug\net8.0\ref\varmekraftDemo.Application.dll
 C:\Users\alfre\Documents\Git projects\varmekraftDemo\varmekraftDemo\varmekraftDemo.Application\obj\Debug\net8.0\varmekraftDemo.Application.sourcelink.json
+C:\Users\noah8\source\repos\varmekraftDemo\varmekraftDemo.Application\bin\Debug\net8.0\varmekraftDemo.Application.deps.json
+C:\Users\noah8\source\repos\varmekraftDemo\varmekraftDemo.Application\bin\Debug\net8.0\varmekraftDemo.Application.dll
+C:\Users\noah8\source\repos\varmekraftDemo\varmekraftDemo.Application\bin\Debug\net8.0\varmekraftDemo.Application.pdb
+C:\Users\noah8\source\repos\varmekraftDemo\varmekraftDemo.Application\bin\Debug\net8.0\varmekraftDemo.Domain.dll
+C:\Users\noah8\source\repos\varmekraftDemo\varmekraftDemo.Application\bin\Debug\net8.0\varmekraftDemo.Domain.pdb
+C:\Users\noah8\source\repos\varmekraftDemo\varmekraftDemo.Application\obj\Debug\net8.0\varmekraftDemo.Application.csproj.AssemblyReference.cache
+C:\Users\noah8\source\repos\varmekraftDemo\varmekraftDemo.Application\obj\Debug\net8.0\varmekraftDemo.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\noah8\source\repos\varmekraftDemo\varmekraftDemo.Application\obj\Debug\net8.0\varmekraftDemo.Application.AssemblyInfoInputs.cache
+C:\Users\noah8\source\repos\varmekraftDemo\varmekraftDemo.Application\obj\Debug\net8.0\varmekraftDemo.Application.AssemblyInfo.cs
+C:\Users\noah8\source\repos\varmekraftDemo\varmekraftDemo.Application\obj\Debug\net8.0\varmekraftDemo.Application.csproj.CoreCompileInputs.cache
+C:\Users\noah8\source\repos\varmekraftDemo\varmekraftDemo.Application\obj\Debug\net8.0\varmekraftDemo.Application.sourcelink.json
+C:\Users\noah8\source\repos\varmekraftDemo\varmekraftDemo.Application\obj\Debug\net8.0\varmekra.8DBD98E3.Up2Date
+C:\Users\noah8\source\repos\varmekraftDemo\varmekraftDemo.Application\obj\Debug\net8.0\varmekraftDemo.Application.dll
+C:\Users\noah8\source\repos\varmekraftDemo\varmekraftDemo.Application\obj\Debug\net8.0\refint\varmekraftDemo.Application.dll
+C:\Users\noah8\source\repos\varmekraftDemo\varmekraftDemo.Application\obj\Debug\net8.0\varmekraftDemo.Application.pdb
+C:\Users\noah8\source\repos\varmekraftDemo\varmekraftDemo.Application\obj\Debug\net8.0\ref\varmekraftDemo.Application.dll
