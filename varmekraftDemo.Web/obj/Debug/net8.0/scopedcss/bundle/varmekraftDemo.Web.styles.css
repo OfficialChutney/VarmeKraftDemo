@@ -1,4 +1,4 @@
-/* /Components/Layout/MainLayout.razor.rz.scp.css */
+/* _content/varmekraftDemo.Web/Components/Layout/MainLayout.razor.rz.scp.css */
 .page[b-k78cujyaci] {
     position: relative;
     display: flex;
@@ -97,7 +97,7 @@ main[b-k78cujyaci] {
         right: 0.75rem;
         top: 0.5rem;
     }
-/* /Components/Layout/NavMenu.razor.rz.scp.css */
+/* _content/varmekraftDemo.Web/Components/Layout/NavMenu.razor.rz.scp.css */
 .navbar-toggler[b-nbcm98rbsl] {
     appearance: none;
     cursor: pointer;
@@ -202,7 +202,7 @@ main[b-k78cujyaci] {
         overflow-y: auto;
     }
 }
-/* /Components/Pages/Forecast/Forecast.razor.rz.scp.css */
+/* _content/varmekraftDemo.Web/Components/Pages/Forecast/Forecast.razor.rz.scp.css */
 .forecast-legend[b-4r8kiaquvs] {
     display: flex;
     flex-wrap: wrap;
@@ -296,7 +296,7 @@ main[b-k78cujyaci] {
     transform: translateY(-2px) scale(1.03);
     box-shadow: 0 10px 22px rgba(15, 23, 42, 0.24);
 }
-/* /Components/Pages/Reports/Reports.razor.rz.scp.css */
+/* _content/varmekraftDemo.Web/Components/Pages/Reports/Reports.razor.rz.scp.css */
 .hp-card[b-po5bvs333c] {
     border-radius: 16px;
 }

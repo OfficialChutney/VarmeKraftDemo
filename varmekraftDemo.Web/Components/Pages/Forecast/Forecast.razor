@@ -1,16 +1,20 @@
-@page "/forecast"
+﻿@page "/forecast"
 
 <PageTitle>Forecast</PageTitle>
 
 <MudContainer Class="mt-8 px-6" MaxWidth="MaxWidth.False">
-    <MudPaper Class="mud-width-full pa-4" Elevation="0" Outlined="true">
-        <MudText Typo="Typo.h6" Class="mb-2">Energi prognoser</MudText>
+    <MudGrid Spacing="3">
 
+        <MudItem xs="8">
+            <MudPaper Class="pa-4 h-100" Elevation="0" Outlined="true">
+                <MudText Typo="Typo.h6" Class="mb-2">
+                    <span style="color: #FF5F00;">Volue</span> prognosis (5 days)
+                </MudText>
         <TimeSeriesLineChart TItem="ForecastPoint"
                              Items="points"
                              XDateSelector="x => x.Time"
                              Series="series"
-                             Height="420"
+                             Height="250"
                              XAxisTitle="Tid"
                              YAxisTitle="Pris (EUR/MWh)"
                              DateTimeLabelFormat="dd-MM HH:mm"
@@ -18,7 +22,8 @@
                              NowLabel="I dag"
                              DashedAfterNow="true"
                              ForecastDashArray="6"
-                             ShowLegend="false" />
+                             ShowLegend="false"
+                             KipPrice="60" />
 
         <div class="forecast-legend" aria-label="Chart legend">
             <div class="forecast-legend-item">
@@ -30,65 +35,295 @@
                 <a class="forecast-legend-logo-trigger"
                    href="https://www.volue.com/about-volue"
                    target="_blank"
-                   rel="noopener noreferrer"
-                   aria-label="Read more about Volue">
+                   rel="noopener noreferrer">
                     <img class="forecast-legend-logo" src="/assets/volue.svg" alt="Volue" />
-                    <span class="forecast-legend-tooltip" role="tooltip">@VolueTooltip</span>
+                    <span class="forecast-legend-tooltip">@VolueTooltip</span>
                 </a>
             </div>
+            <div class="forecast-legend-item">
+                <span class="forecast-legend-swatch kip"></span>
+                <span>Kip pris</span>
+            </div>
         </div>
+
     </MudPaper>
+        </MudItem>
+            <MudItem xs="4">
+                <MudPaper Class="pa-0 h-100" Elevation="0" Outlined="true" Style="overflow:hidden;">
+                    <MudDatePicker PickerVariant="PickerVariant.Static"
+                                   Color="MudBlazor.Color.Success"
+                                   Rounded="true"
+                                   Date="@(DateTime.Today)"
+                                   Elevation="0" />
+                </MudPaper>
+            </MudItem>
+
+            <MudItem xs="12">
+                <MudPaper Class="pa-4" Outlined="true">
+                    <MudText Typo="Typo.h6">Hours with prognosis above KIP</MudText>
+                    <ApexChart TItem="RunBlock" Options="@timelineOptions">
+            @* Green run blocks *@
+            <ApexRangeSeries TItem="RunBlock"
+                             Items="runBlocks"
+                             Name="Drift"
+                             XValue="@(b => b.Day)"
+                             YMinValue="@(b => b.NormalizedStart)"
+                             YMaxValue="@(b => b.NormalizedEnd)" />
+
+            @* Gray past overlay blocks *@
+            <ApexRangeSeries TItem="RunBlock"
+                             Items="pastBlocks"
+                             Name="Fortid"
+                             XValue="@(b => b.Day)"
+                             YMinValue="@(b => b.NormalizedStart)"
+                             YMaxValue="@(b => b.NormalizedEnd)" />
+        </ApexChart>
+
+    </MudPaper>
+		</MudItem>
+    </MudGrid>
+
 </MudContainer>
 
+<style>
+    .outlined-calendar .mud-elevation-1 {
+        box-shadow: none !important;
+        border: 1px solid rgba(0,0,0,0.12);
+        border-radius: 4px;
+    }
+</style>
+
 @code {
+
+    private const decimal KipThreshold = 60m;
+
+    private static readonly DateTime ReferenceDate = new(2000, 1, 1);
+    private static readonly System.Globalization.CultureInfo DaCulture = new("da-DK");
+
     private DateTime now;
     private IReadOnlyList<ForecastPoint> points = Array.Empty<ForecastPoint>();
-    private const string VolueTooltip = "Volue is a technology supplier focused on the energy and power grid markets, offering software, market insights and services to support the green transition.";
+    private List<RunBlock> runBlocks = new();
+    private List<RunBlock> pastBlocks = new();
+    private ApexChartOptions<RunBlock> timelineOptions = new();
 
-    private IReadOnlyList<TimeSeriesLineSeries<ForecastPoint>> series = Array.Empty<TimeSeriesLineSeries<ForecastPoint>>();
+    private const string VolueTooltip =
+        "Volue is a technology supplier focused on the energy and power grid markets.";
+
+    private IReadOnlyList<TimeSeriesLineSeries<ForecastPoint>> series =
+        Array.Empty<TimeSeriesLineSeries<ForecastPoint>>();
 
     protected override void OnInitialized()
     {
         now = DateTime.Now;
-        points = BuildFakeData(now, hoursBack: 24, hoursForward: 48);
+
+        points = BuildFakeData(now, 24, 24 * 5);
 
         series =
         [
-            new("Spot", x => x.SpotPriceEur, ItemFilter: x => x.Time <= now),
-
-            new("Volue (past)",    x => x.VoleuForecastEur,    ItemFilter: x => x.Time <= now),
-            new("Volue",           x => x.VoleuForecastEur,    ItemFilter: x => x.Time >  now),
+            new("Spot",         x => x.SpotPriceEur,     ItemFilter: x => x.Time <= now),
+            new("Volue (past)", x => x.VoleuForecastEur, ItemFilter: x => x.Time <= now),
+            new("Volue",        x => x.VoleuForecastEur, ItemFilter: x => x.Time > now)
         ];
+
+        runBlocks = BuildRunBlocks(points, KipThreshold);
+        pastBlocks = BuildPastBlocks(now);
+
+        var axisStart = new DateTimeOffset(ReferenceDate, TimeSpan.Zero);
+        var axisEnd = axisStart.AddDays(1);
+        var axisStartMs = (decimal)axisStart.ToUnixTimeMilliseconds();
+
+        var nowNormalized = ReferenceDate.AddHours(now.Hour).AddMinutes(now.Minute);
+        var nowMs = (decimal)new DateTimeOffset(nowNormalized, TimeSpan.Zero).ToUnixTimeMilliseconds();
+
+        var todayLabel = DateTime.Today.ToString("dd MMM", DaCulture);
+
+        timelineOptions = new ApexChartOptions<RunBlock>
+        {
+            Chart = new Chart
+            {
+                Type = ApexCharts.ChartType.RangeBar,
+                Height = 220,
+                Toolbar = new Toolbar { Show = false },
+                Zoom = new Zoom { Enabled = false }
+            },
+
+            PlotOptions = new PlotOptions
+            {
+                Bar = new PlotOptionsBar
+                {
+                    Horizontal = true,
+                    BarHeight = "60%",
+                    RangeBarGroupRows = true
+                }
+            },
+
+            // Series 0 = green run blocks, Series 1 = gray past overlay
+            Colors = new List<string> { "#5f8f6b", "rgba(114, 214, 115,0.4)" },
+
+            DataLabels = new DataLabels { Enabled = false },
+
+            Legend = new Legend { Show = false },
+
+            Tooltip = new Tooltip
+            {
+                // Hide tooltip for the gray past series
+                Custom = @"function({ seriesIndex, dataPointIndex, w }) {
+                    if (seriesIndex === 1) return '';
+                    var d = w.globals.seriesRangeStart[seriesIndex][dataPointIndex];
+                    var e = w.globals.seriesRangeEnd[seriesIndex][dataPointIndex];
+                    var fmt = function(ms) {
+                        var d = new Date(ms);
+                        return d.getUTCHours().toString().padStart(2,'0') + ':' + d.getUTCMinutes().toString().padStart(2,'0');
+                    };
+                    return '<div style=""padding:6px 10px"">' + fmt(d) + ' – ' + fmt(e) + '</div>';
+                }"
+            },
+
+            Xaxis = new XAxis
+            {
+                Type = XAxisType.Datetime,
+                Min = axisStartMs,
+                Max = (decimal)axisEnd.ToUnixTimeMilliseconds(),
+                Labels = new XAxisLabels
+                {
+                    Format = "HH:mm",
+                    DatetimeUTC = true
+                },
+                TickAmount = 12
+            },
+
+            Annotations = new Annotations
+            {
+                Xaxis = new List<AnnotationsXAxis>
+                {
+                    // "Nu" line at current time
+                    new()
+                    {
+                        X               = nowMs,
+                        BorderColor     = "#111827",
+                        BorderWidth     = 2,
+                        StrokeDashArray = 0,
+                        Label = new Label
+                        {
+                            Text        = "Nu",
+                            BorderColor = "#111827",
+                            Style = new Style
+                            {
+                                Background = "#111827",
+                                Color      = "#ffffff",
+                                FontSize   = "11px"
+                            }
+                        }
+                    }
+                },
+                Yaxis = new List<AnnotationsYAxis>
+                {
+                    // Subtle highlight on today's row — no label
+                    new()
+                    {
+                        Y           = todayLabel,
+                        Y2          = todayLabel,
+                        BorderColor = "transparent",
+                        FillColor   = "#111827",
+                        Opacity     = 0.06,
+                        Label       = new Label { Text = "" }
+                    }
+                }
+            }
+        };
     }
 
-    private static IReadOnlyList<ForecastPoint> BuildFakeData(DateTime now, int hoursBack, int hoursForward)
+    // ── Past overlay blocks ───────────────────────────────────────────────────
+    // Fully shades days before today; partially shades today up to now.
+
+    private static List<RunBlock> BuildPastBlocks(DateTime now)
+    {
+        var blocks = new List<RunBlock>();
+        // Use data window start (24h back) rather than week start so days
+        // like 08 mar that fall before Monday are still shaded
+        var dataStart = now.Date.AddDays(-1);
+        var weekStart = dataStart < GetWeekStart() ? dataStart : GetWeekStart();
+        var today = now.Date;
+
+        var midnightMs = (decimal)new DateTimeOffset(ReferenceDate, TimeSpan.Zero).ToUnixTimeMilliseconds();
+        var fullDayMs = (decimal)new DateTimeOffset(ReferenceDate.AddDays(1), TimeSpan.Zero).ToUnixTimeMilliseconds();
+
+        for (int d = 0; d < 6; d++)
+        {
+            var day = weekStart.AddDays(d);
+            var label = day.ToString("dd MMM", DaCulture);
+
+            if (day < today)
+            {
+                // Entire day is in the past — full-width gray bar
+                blocks.Add(new RunBlock
+                {
+                    Day = label,
+                    Date = day,
+                    NormalizedStart = midnightMs,
+                    NormalizedEnd = fullDayMs
+                });
+            }
+            else if (day == today && now.Hour > 0)
+            {
+                // Today — shade from midnight up to current hour
+                var nowNormalized = ReferenceDate.AddHours(now.Hour).AddMinutes(now.Minute);
+                var nowMs = (decimal)new DateTimeOffset(nowNormalized, TimeSpan.Zero).ToUnixTimeMilliseconds();
+
+                blocks.Add(new RunBlock
+                {
+                    Day = label,
+                    Date = day,
+                    NormalizedStart = midnightMs,
+                    NormalizedEnd = nowMs
+                });
+            }
+            // Future days: no block → no shading
+        }
+
+        return blocks;
+    }
+
+    // ── Week helpers ──────────────────────────────────────────────────────────
+
+    private static DateTime GetWeekStart()
+    {
+        var today = DateTime.Today;
+        int diff = ((int)today.DayOfWeek - (int)DayOfWeek.Monday + 7) % 7;
+        return today.AddDays(-diff);
+    }
+
+    // ── Fake data ─────────────────────────────────────────────────────────────
+
+    private static IReadOnlyList<ForecastPoint> BuildFakeData(
+        DateTime now,
+        int hoursBack,
+        int hoursForward)
     {
         var start = now.AddHours(-hoursBack);
         var end = now.AddHours(hoursForward);
-
-        start = new DateTime(start.Year, start.Month, start.Day, start.Hour, 0, 0, start.Kind);
-        end = new DateTime(end.Year, end.Month, end.Day, end.Hour, 0, 0, end.Kind);
-
         var random = new Random(42);
         var list = new List<ForecastPoint>();
-
         var t = start;
         var i = 0;
+
         while (t <= end)
         {
-            var basePrice = 55
-                + 12 * Math.Sin(i / 6.0)
-                + 6 * Math.Cos(i / 11.0)
-                + (random.NextDouble() * 4 - 2);
+            var basePrice =
+                60
+                + 18 * Math.Sin(i / 4.0)
+                + 8 * Math.Cos(i / 7.0)
+                + (random.NextDouble() * 6 - 3);
 
             var spot = (decimal)Math.Round(basePrice, 2);
-            var voleu = spot + (decimal)Math.Round(1.5 + 2.0 * Math.Sin(i / 9.0), 2);
+            var volue = spot + (decimal)Math.Round(1.5 + 2.0 * Math.Sin(i / 9.0), 2);
 
             list.Add(new ForecastPoint
             {
                 Time = t,
                 SpotPriceEur = spot,
-                VoleuForecastEur = voleu
+                VoleuForecastEur = volue,
+                KipPriceEur = KipThreshold
             });
 
             t = t.AddHours(1);
@@ -98,10 +333,99 @@
         return list;
     }
 
+    // ── Run block logic ───────────────────────────────────────────────────────
+
+    private static List<RunBlock> BuildRunBlocks(
+        IReadOnlyList<ForecastPoint> points,
+        decimal kip)
+    {
+        var blocks = new List<RunBlock>();
+
+        bool running = points[0].VoleuForecastEur > kip;
+        DateTime segStart = points[0].Time;
+
+        foreach (var p in points.Skip(1))
+        {
+            bool state = p.VoleuForecastEur > kip;
+
+            if (state != running)
+            {
+                if (running) EmitSegment(blocks, segStart, p.Time);
+                segStart = p.Time;
+                running = state;
+            }
+        }
+
+        if (running)
+            EmitSegment(blocks, segStart, points.Last().Time);
+
+        // Ensure all 7 days appear as rows
+        var weekStart = GetWeekStart();
+        var coveredDays = blocks.Select(b => b.Date).ToHashSet();
+
+        for (int d = 0; d < 6; d++)
+        {
+            var day = weekStart.AddDays(d);
+            if (!coveredDays.Contains(day))
+            {
+                var ms = (decimal)new DateTimeOffset(ReferenceDate, TimeSpan.Zero).ToUnixTimeMilliseconds();
+                blocks.Add(new RunBlock
+                {
+                    Day = day.ToString("dd MMM", DaCulture),
+                    Date = day,
+                    NormalizedStart = ms,
+                    NormalizedEnd = ms
+                });
+            }
+        }
+
+        return blocks.OrderBy(b => b.Date).ToList();
+    }
+
+    private static void EmitSegment(List<RunBlock> blocks, DateTime start, DateTime end)
+    {
+        var cursor = start;
+
+        while (cursor < end)
+        {
+            var dayEnd = cursor.Date.AddDays(1);
+            var segEnd = end < dayEnd ? end : dayEnd;
+
+            var normalizedStart = ReferenceDate
+                .AddHours(cursor.Hour)
+                .AddMinutes(cursor.Minute);
+
+            var normalizedEnd = segEnd.Date == cursor.Date
+                ? ReferenceDate.AddHours(segEnd.Hour).AddMinutes(segEnd.Minute)
+                : ReferenceDate.AddDays(1);
+
+            blocks.Add(new RunBlock
+            {
+                Day = cursor.Date.ToString("dd MMM", DaCulture),
+                Date = cursor.Date,
+                NormalizedStart = (decimal)new DateTimeOffset(normalizedStart, TimeSpan.Zero).ToUnixTimeMilliseconds(),
+                NormalizedEnd = (decimal)new DateTimeOffset(normalizedEnd, TimeSpan.Zero).ToUnixTimeMilliseconds()
+            });
+
+            cursor = segEnd;
+        }
+    }
+
+    // ── Models ────────────────────────────────────────────────────────────────
+
     private sealed class ForecastPoint
     {
         public DateTime Time { get; set; }
         public decimal? SpotPriceEur { get; set; }
         public decimal? VoleuForecastEur { get; set; }
+        public decimal? KipPriceEur { get; set; }
+    }
+
+    public class RunBlock
+    {
+        public string Day { get; set; } = "";
+        public DateTime Date { get; set; }
+        public decimal NormalizedStart { get; set; }
+        public decimal NormalizedEnd { get; set; }
     }
 }

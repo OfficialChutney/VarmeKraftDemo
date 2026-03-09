@@ -30,3 +30,19 @@ C:\Users\noah8\source\repos\varmekraftDemo\varmekraftDemo.Application\obj\Debug\
 C:\Users\noah8\source\repos\varmekraftDemo\varmekraftDemo.Application\obj\Debug\net8.0\refint\varmekraftDemo.Application.dll
 C:\Users\noah8\source\repos\varmekraftDemo\varmekraftDemo.Application\obj\Debug\net8.0\varmekraftDemo.Application.pdb
 C:\Users\noah8\source\repos\varmekraftDemo\varmekraftDemo.Application\obj\Debug\net8.0\ref\varmekraftDemo.Application.dll
+C:\Users\alfre\Documents\Git projects\VarmeKraftDemo\varmekraftDemo.Application\bin\Debug\net8.0\varmekraftDemo.Application.deps.json
+C:\Users\alfre\Documents\Git projects\VarmeKraftDemo\varmekraftDemo.Application\bin\Debug\net8.0\varmekraftDemo.Application.dll
+C:\Users\alfre\Documents\Git projects\VarmeKraftDemo\varmekraftDemo.Application\bin\Debug\net8.0\varmekraftDemo.Application.pdb
+C:\Users\alfre\Documents\Git projects\VarmeKraftDemo\varmekraftDemo.Application\bin\Debug\net8.0\varmekraftDemo.Domain.dll
+C:\Users\alfre\Documents\Git projects\VarmeKraftDemo\varmekraftDemo.Application\bin\Debug\net8.0\varmekraftDemo.Domain.pdb
+C:\Users\alfre\Documents\Git projects\VarmeKraftDemo\varmekraftDemo.Application\obj\Debug\net8.0\varmekraftDemo.Application.csproj.AssemblyReference.cache
+C:\Users\alfre\Documents\Git projects\VarmeKraftDemo\varmekraftDemo.Application\obj\Debug\net8.0\varmekraftDemo.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alfre\Documents\Git projects\VarmeKraftDemo\varmekraftDemo.Application\obj\Debug\net8.0\varmekraftDemo.Application.AssemblyInfoInputs.cache
+C:\Users\alfre\Documents\Git projects\VarmeKraftDemo\varmekraftDemo.Application\obj\Debug\net8.0\varmekraftDemo.Application.AssemblyInfo.cs
+C:\Users\alfre\Documents\Git projects\VarmeKraftDemo\varmekraftDemo.Application\obj\Debug\net8.0\varmekraftDemo.Application.csproj.CoreCompileInputs.cache
+C:\Users\alfre\Documents\Git projects\VarmeKraftDemo\varmekraftDemo.Application\obj\Debug\net8.0\varmekraftDemo.Application.sourcelink.json
+C:\Users\alfre\Documents\Git projects\VarmeKraftDemo\varmekraftDemo.Application\obj\Debug\net8.0\varmekra.8DBD98E3.Up2Date
+C:\Users\alfre\Documents\Git projects\VarmeKraftDemo\varmekraftDemo.Application\obj\Debug\net8.0\varmekraftDemo.Application.dll
+C:\Users\alfre\Documents\Git projects\VarmeKraftDemo\varmekraftDemo.Application\obj\Debug\net8.0\refint\varmekraftDemo.Application.dll
+C:\Users\alfre\Documents\Git projects\VarmeKraftDemo\varmekraftDemo.Application\obj\Debug\net8.0\varmekraftDemo.Application.pdb
+C:\Users\alfre\Documents\Git projects\VarmeKraftDemo\varmekraftDemo.Application\obj\Debug\net8.0\ref\varmekraftDemo.Application.dll

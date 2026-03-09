@@ -28,6 +28,7 @@ else
 }
 
 @code {
+
     [Parameter] public IReadOnlyList<TItem> Items { get; set; } = Array.Empty<TItem>();
     [Parameter] public Func<TItem, DateTime>? XDateSelector { get; set; }
     [Parameter] public IReadOnlyList<TimeSeriesLineSeries<TItem>> Series { get; set; } = Array.Empty<TimeSeriesLineSeries<TItem>>();
@@ -43,13 +44,17 @@ else
 
     [Parameter] public bool DashedAfterNow { get; set; } = true;
     [Parameter] public int ForecastDashArray { get; set; } = 6;
-    [Parameter] public bool ShowLegend { get; set; } = true;
+    [Parameter] public bool ShowLegend { get; set; } = false;
 
     [Parameter] public double? YMin { get; set; }
     [Parameter] public double? YMax { get; set; }
 
+    // Kippris reference
+    [Parameter] public double? KipPrice { get; set; }
+
     private ApexChartOptions<TItem> options = new();
     private string renderKey = Guid.NewGuid().ToString("N");
+
     private IReadOnlyList<TItem> orderedItems = Array.Empty<TItem>();
     private IReadOnlyList<(TimeSeriesLineSeries<TItem> Series, IReadOnlyList<TItem> Items)> seriesWithItems =
         Array.Empty<(TimeSeriesLineSeries<TItem>, IReadOnlyList<TItem>)>();
@@ -85,21 +90,26 @@ else
                 Height = Height,
                 Toolbar = new Toolbar { Show = false }
             },
+
             Stroke = new Stroke
             {
                 Curve = Curve.Straight,
                 Width = Enumerable.Repeat(2d, Series.Count).ToList(),
                 DashArray = Series.Select(GetDashArray).ToList()
             },
+
             Markers = new Markers
             {
                 Size = 0
             },
+
             Colors = Series.Select(GetSeriesColor).ToList(),
+
             DataLabels = new DataLabels
             {
                 Enabled = false
             },
+
             Legend = new Legend
             {
                 Show = ShowLegend,
@@ -107,10 +117,12 @@ else
                     return seriesName.replace(' (past)','');
                 }"
             },
+
             Grid = new Grid
             {
                 StrokeDashArray = 3
             },
+
             Xaxis = new XAxis
             {
                 Type = XAxisType.Datetime,
@@ -123,6 +135,7 @@ else
                     ShowDuplicates = false
                 }
             },
+
             Yaxis = new List<YAxis>
             {
                 new()
@@ -132,7 +145,8 @@ else
                     Max = YMax
                 }
             },
-            Annotations = ShowNowMarker ? BuildNowAnnotation(now) : null,
+
+            Annotations = BuildAnnotations(now)
         };
     }
 
@@ -144,6 +158,7 @@ else
         }
 
         var list = new List<(TimeSeriesLineSeries<TItem> Series, IReadOnlyList<TItem> Items)>(Series.Count);
+
         foreach (var series in Series)
         {
             if (series.ItemFilter is null)
@@ -171,7 +186,20 @@ else
             return 0;
         }
 
-        return series.Name.Contains("(past)", StringComparison.Ordinal) ? 0 : ForecastDashArray;
+        // Spotpris skal altid være solid
+        if (series.Name.StartsWith("Spot", StringComparison.Ordinal))
+        {
+            return 0;
+        }
+
+        // Historisk forecast solid
+        if (series.Name.Contains("(past)", StringComparison.Ordinal))
+        {
+            return 0;
+        }
+
+        // Fremtidig forecast dashed
+        return ForecastDashArray;
     }
 
     private static string GetSeriesColor(TimeSeriesLineSeries<TItem> series)
@@ -191,11 +219,14 @@ else
         return isPast ? "rgba(100,116,139,0.30)" : "rgba(100,116,139,0.90)";
     }
 
-    private Annotations BuildNowAnnotation(DateTime now)
+    private Annotations BuildAnnotations(DateTime now)
     {
-        return new Annotations
+        var annotations = new Annotations();
+
+        // X-axis marker (I dag)
+        if (ShowNowMarker)
         {
-            Xaxis = new List<AnnotationsXAxis>
+            annotations.Xaxis = new List<AnnotationsXAxis>
             {
                 new()
                 {
@@ -216,7 +247,34 @@ else
                         }
                     }
                 }
-            }
-        };
+            };
+        }
+
+        // Kippris reference
+        if (KipPrice.HasValue)
+        {
+            annotations.Yaxis = new List<AnnotationsYAxis>
+            {
+                new()
+                {
+                    Y = KipPrice.Value,
+                    BorderColor = "rgba(100,116,139,0.45)",
+                    BorderWidth = 2,
+                    StrokeDashArray = 0,
+                    Label = new Label
+                    {
+                        Text = $"Kippris ({KipPrice})",
+                        Style = new Style
+                        {
+                            Background = "#64748B",
+                            Color = "#ffffff",
+                            FontSize = "11px"
+                        }
+                    }
+                }
+            };
+        }
+
+        return annotations;
     }
 }

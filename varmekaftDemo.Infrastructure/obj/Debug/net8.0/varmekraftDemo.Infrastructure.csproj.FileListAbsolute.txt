@@ -34,3 +34,21 @@ C:\Users\noah8\source\repos\varmekraftDemo\varmekaftDemo.Infrastructure\obj\Debu
 C:\Users\noah8\source\repos\varmekraftDemo\varmekaftDemo.Infrastructure\obj\Debug\net8.0\refint\varmekraftDemo.Infrastructure.dll
 C:\Users\noah8\source\repos\varmekraftDemo\varmekaftDemo.Infrastructure\obj\Debug\net8.0\varmekraftDemo.Infrastructure.pdb
 C:\Users\noah8\source\repos\varmekraftDemo\varmekaftDemo.Infrastructure\obj\Debug\net8.0\ref\varmekraftDemo.Infrastructure.dll
+C:\Users\alfre\Documents\Git projects\VarmeKraftDemo\varmekaftDemo.Infrastructure\bin\Debug\net8.0\varmekraftDemo.Infrastructure.deps.json
+C:\Users\alfre\Documents\Git projects\VarmeKraftDemo\varmekaftDemo.Infrastructure\bin\Debug\net8.0\varmekraftDemo.Infrastructure.dll
+C:\Users\alfre\Documents\Git projects\VarmeKraftDemo\varmekaftDemo.Infrastructure\bin\Debug\net8.0\varmekraftDemo.Infrastructure.pdb
+C:\Users\alfre\Documents\Git projects\VarmeKraftDemo\varmekaftDemo.Infrastructure\bin\Debug\net8.0\varmekraftDemo.Application.dll
+C:\Users\alfre\Documents\Git projects\VarmeKraftDemo\varmekaftDemo.Infrastructure\bin\Debug\net8.0\varmekraftDemo.Domain.dll
+C:\Users\alfre\Documents\Git projects\VarmeKraftDemo\varmekaftDemo.Infrastructure\bin\Debug\net8.0\varmekraftDemo.Application.pdb
+C:\Users\alfre\Documents\Git projects\VarmeKraftDemo\varmekaftDemo.Infrastructure\bin\Debug\net8.0\varmekraftDemo.Domain.pdb
+C:\Users\alfre\Documents\Git projects\VarmeKraftDemo\varmekaftDemo.Infrastructure\obj\Debug\net8.0\varmekraftDemo.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\alfre\Documents\Git projects\VarmeKraftDemo\varmekaftDemo.Infrastructure\obj\Debug\net8.0\varmekraftDemo.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alfre\Documents\Git projects\VarmeKraftDemo\varmekaftDemo.Infrastructure\obj\Debug\net8.0\varmekraftDemo.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\alfre\Documents\Git projects\VarmeKraftDemo\varmekaftDemo.Infrastructure\obj\Debug\net8.0\varmekraftDemo.Infrastructure.AssemblyInfo.cs
+C:\Users\alfre\Documents\Git projects\VarmeKraftDemo\varmekaftDemo.Infrastructure\obj\Debug\net8.0\varmekraftDemo.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\alfre\Documents\Git projects\VarmeKraftDemo\varmekaftDemo.Infrastructure\obj\Debug\net8.0\varmekraftDemo.Infrastructure.sourcelink.json
+C:\Users\alfre\Documents\Git projects\VarmeKraftDemo\varmekaftDemo.Infrastructure\obj\Debug\net8.0\varmekra.96F54625.Up2Date
+C:\Users\alfre\Documents\Git projects\VarmeKraftDemo\varmekaftDemo.Infrastructure\obj\Debug\net8.0\varmekraftDemo.Infrastructure.dll
+C:\Users\alfre\Documents\Git projects\VarmeKraftDemo\varmekaftDemo.Infrastructure\obj\Debug\net8.0\refint\varmekraftDemo.Infrastructure.dll
+C:\Users\alfre\Documents\Git projects\VarmeKraftDemo\varmekaftDemo.Infrastructure\obj\Debug\net8.0\varmekraftDemo.Infrastructure.pdb
+C:\Users\alfre\Documents\Git projects\VarmeKraftDemo\varmekaftDemo.Infrastructure\obj\Debug\net8.0\ref\varmekraftDemo.Infrastructure.dll
